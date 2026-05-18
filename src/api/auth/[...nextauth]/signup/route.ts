@@ -1,12 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import dbConnect from "@/app/lib/db.connect";
-import User from "@/app/Model/User";
+import { db } from "@/lib/db";
+import { users } from "@/lib/schema";
+import { eq, or } from "drizzle-orm";
 import bcrypt from "bcryptjs";
 
 export async function POST(req: NextRequest) {
   try {
-    await dbConnect();
-
     const { name, email, password } = await req.json();
 
     if (!name || !email || !password) {
@@ -16,10 +15,17 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check if user already exists
-    const existingUser = await User.findOne({
-      $or: [{ email }, { Username: name }],
-    });
+    // Check if user already exists using Drizzle
+    const [existingUser] = await db
+      .select()
+      .from(users)
+      .where(
+        or(
+          eq(users.email, email),
+          eq(users.name, name)
+        )
+      )
+      .limit(1);
 
     if (existingUser) {
       return NextResponse.json(
@@ -31,15 +37,18 @@ export async function POST(req: NextRequest) {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create the user in the database
-    const newUser = await User.create({
-      Username: name,
+    const newUserId = crypto.randomUUID();
+
+    // Create the user in the database using Drizzle
+    await db.insert(users).values({
+      id: newUserId,
+      name: name,
       email: email,
-      Password: hashedPassword,
+      password: hashedPassword,
     });
 
     return NextResponse.json(
-      { message: "User registered successfully", userId: newUser._id },
+      { message: "User registered successfully", userId: newUserId },
       { status: 201 }
     );
   } catch (error) {

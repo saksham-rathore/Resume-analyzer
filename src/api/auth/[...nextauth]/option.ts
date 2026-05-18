@@ -1,7 +1,8 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import User from "@/app/model/User";
-import dbConnect from "@/app/lib/db.connect";
+import { db } from "@/lib/db";
+import { users } from "@/lib/schema";
+import { eq, or } from "drizzle-orm";
 import { AuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import GithubProvider from "next-auth/providers/github";
@@ -39,23 +40,29 @@ export const authOptions: AuthOptions = {
           throw new Error("Email and password are required");
         }
 
-        await dbConnect();
-
         try {
-          const user = await User.findOne({
-            $or: [
-              { email: credentials.email },
-              { Username: credentials.email },
-            ],
-          });
+          const [user] = await db
+            .select()
+            .from(users)
+            .where(
+              or(
+                eq(users.email, credentials.email),
+                eq(users.name, credentials.email)
+              )
+            )
+            .limit(1);
 
           if (!user) {
             throw new Error("No user found with this email");
           }
 
+          if (!user.password) {
+            throw new Error("Account has no password set");
+          }
+
           const isPasswordCorrect = await bcrypt.compare(
             credentials.password,
-            user.Password,
+            user.password,
           );
 
           if (!isPasswordCorrect) {
@@ -63,8 +70,8 @@ export const authOptions: AuthOptions = {
           }
 
           return {
-            id: user._id.toString(),
-            name: user.Username,
+            id: user.id,
+            name: user.name || "",
             email: user.email,
           };
         } catch (error) {
