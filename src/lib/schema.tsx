@@ -11,7 +11,6 @@ export const users = pgTable("users", {
   name: text("name"),
   email: text("email").notNull().unique(),
   emailVerified: timestamp("email_verified"),
-  image: text("image"),
   password: text("password"),
 });
 
@@ -36,3 +35,14 @@ export const sessions = pgTable("sessions", {
   userId: text("user_id").notNull(),
   expires: timestamp("expires").notNull(),
 });
+
+// resumes
+export const resume = pgTable("resume", {
+  
+})
+
+
+// Analysis
+export const analysis = pgTable("analysis", {
+  
+})
