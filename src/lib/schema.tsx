@@ -3,6 +3,8 @@ import {
   text,
   timestamp,
   primaryKey,
+  serial,
+  integer,
 } from "drizzle-orm/pg-core";
 
 // Users
@@ -38,11 +40,28 @@ export const sessions = pgTable("sessions", {
 
 // resumes
 export const resume = pgTable("resume", {
-  
-})
+  id: serial("id").primaryKey(),
+  userId: text("user_id")
+    .references(() => users.id, { onDelete: "cascade" })
+    .notNull(),
+  title: text("title"),
+  content: text("content"),
+  fileUrl: text("file_url"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
 
 
 // Analysis
 export const analysis = pgTable("analysis", {
-  
-})
+  id: serial("id").primaryKey(),
+  resumeId: integer("resume_id")
+    .references(() => resume.id, { onDelete: "cascade" })
+    .notNull(),
+  score: integer("score"),
+  feedback: text("feedback"),
+  strengths: text("strengths"),
+  weaknesses: text("weaknesses"),
+  suggestions: text("suggestions"),
+  jobRole: text("job_role"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});

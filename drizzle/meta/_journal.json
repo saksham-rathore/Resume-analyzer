@@ -8,6 +8,13 @@
       "when": 1779122250225,
       "tag": "0000_woozy_johnny_storm",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1779177452710,
+      "tag": "0001_green_the_fallen",
+      "breakpoints": true
     }
   ]
 }
