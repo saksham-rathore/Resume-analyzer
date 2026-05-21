@@ -1,7 +1,13 @@
 import { Queue } from "bullmq";
 
-const queue = new Queue("Paint");
-await queue.add("cars", {
-  color: "blue",
-  delay: 30000
-});
+const connection = {
+  host: 'localhost',
+  port: 6379,
+}
+
+const resumeQueue = new Queue('resumeQueue', { connection });
+
+module.exports = {
+  resumeQueue,
+  connection,
+}
