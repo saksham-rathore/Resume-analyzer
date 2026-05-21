@@ -1,13 +1,8 @@
 import { Queue } from "bullmq";
 
-const connection = {
+export const connection = {
   host: 'localhost',
   port: 6379,
 }
 
-const resumeQueue = new Queue('resumeQueue', { connection });
-
-module.exports = {
-  resumeQueue,
-  connection,
-}
+export const resumeQueue = new Queue('resumeQueue', { connection });

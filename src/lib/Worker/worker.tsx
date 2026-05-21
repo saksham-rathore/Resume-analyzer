@@ -1,5 +1,9 @@
 import { Worker } from 'bullmq';
 import IORedis from 'ioredis';
+import { db } from '../db';
+import { resume, analysis } from '../schema';
+import { NextResponse } from 'next/server';
+import { resumeQueue } from './queue';
 
 const connection = new IORedis({ maxRetriesPerRequest: null });
 
