@@ -26,15 +26,15 @@ export async function POST(req: Request) {
         const base64 = buffer.toString("base64")
 
         const [newResume] = await db
-        .insert(resume)
-        .values({
-            userId: userId,
-            title: title || file.name,
-            content: "",
-            fileUrl: "",
-            createdAt: new Date(),
-        })
-        .returning();
+            .insert(resume)
+            .values({
+                userId: userId,
+                title: title || file.name,
+                content: "",
+                fileUrl: "",
+                createdAt: new Date(),
+            })
+            .returning();
 
         await resumeQueue.add(
             "analyse",
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
             },
             {
                 attempts: 3,
-                backoff: {type: "exponential", delay: 2000}
+                backoff: { type: "exponential", delay: 2000 }
             }
         );
 
@@ -57,37 +57,37 @@ export async function POST(req: Request) {
     } catch (error) {
         console.error("POST /api/resume error:", error);
         return NextResponse.json(
-            {error: "Failed to upload resume"},
-            {status: 500}
+            { error: "Failed to upload resume" },
+            { status: 500 }
         );
     }
 }
 
 export async function GET(req: Request) {
     try {
-        const {searchParams} = new URL(req.url)
+        const { searchParams } = new URL(req.url)
         const userId = searchParams.get("userId");
 
         if (!userId) {
             return NextResponse.json(
-                {error: "userId is required"},
-                {status: 400}
+                { error: "userId is required" },
+                { status: 400 }
             );
         }
 
-        const resumes = await db 
-        .select()
-        .from(resume)
-        .where(eq(resume.userId, userId))
-        .orderBy(resume.createdAt);
+        const resumes = await db
+            .select()
+            .from(resume)
+            .where(eq(resume.userId, userId))
+            .orderBy(resume.createdAt);
 
         return NextResponse.json(resumes);
 
     } catch (error) {
         console.error("GET /api/resumes error:", error);
         return NextResponse.json(
-            {error: "Failed to fetch resumes"},
-            {status: 500}
+            { error: "Failed to fetch resumes" },
+            { status: 500 }
         );
     }
 }

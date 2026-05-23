@@ -9,7 +9,7 @@ import { eq } from 'drizzle-orm';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { json } from 'stream/consumers';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.GEMINI_FLASH || '');
 const connection = new IORedis({ maxRetriesPerRequest: null });
 
 const worker = new Worker(
@@ -23,7 +23,7 @@ const worker = new Worker(
 
     const parser = new PDFParse({ data: buffer });
     let resumeText = '';
-    try {
+    try { 
       const parsed = await parser.getText();
       resumeText = parsed.text;
     } finally {

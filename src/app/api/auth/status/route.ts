@@ -4,14 +4,23 @@ import { error } from "console";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request, { params }: { params: { id: string } }
-) {
+export async function GET(req: Request) {
     try {
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get("id");
+
+        if (!id) {
+            return NextResponse.json(
+                { error: "Resume id is required" },
+                { status: 400 }
+            );
+        }
+
         const [row] = await db
             .select()
             .from(resume)
             .leftJoin(analysis, eq(analysis.resumeId, resume.id))
-            .where(eq(resume.id, parseInt(params.id)));
+            .where(eq(resume.id, parseInt(id)));
 
         if (!row) {
             return NextResponse.json(
@@ -23,7 +32,7 @@ export async function GET(req: Request, { params }: { params: { id: string } }
         return NextResponse.json({
             status: row.analysis ? "completed" : "pending",
             analysis: row.analysis ?? null
-        })
+        });
 
         
     } catch (error) {
