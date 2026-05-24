@@ -37,7 +37,7 @@ export default function Simulator() {
           Interactive Tool
         </div>
         <h2 className="text-3xl md:text-4xl font-cabinet font-extrabold text-slate-800 mb-4">
-          How Much Do Small Errors Cost You?
+          How Much Do <span className="italic-accent text-blue-dark font-normal">Small Errors</span> Cost You?
         </h2>
         <p className="text-slate-500 text-base md:text-lg">
           Toggle the most common structural and content mistakes on a typical resume below. See in real-time how modern ATS scanning bots react and downgrade your score.
@@ -232,7 +232,7 @@ export default function Simulator() {
                   <span className="text-5xl font-cabinet font-black text-slate-800 transition-all duration-300">
                     {currentScore}
                   </span>
-                  <span className="text-xs font-bold text-slate-50 tracking-widest mt-1 text-effect-neural bg-blue-normal px-2 py-0.5 rounded-md">
+                  <span className="text-xs font-bold text-slate-50 tracking-widest mt-1 bg-blue-normal px-2 py-0.5 rounded-md">
                     SCORE
                   </span>
                 </div>

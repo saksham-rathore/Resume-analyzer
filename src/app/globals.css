@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Anonymous+Pro&family=Anton&family=Audiowide&family=Bebas+Neue&family=Chakra+Petch&family=Cinzel&family=Courier+Prime&family=Cutive+Mono&family=DM+Mono&family=DotGothic16&family=Fira+Code&family=Fira+Mono&family=IBM+Plex+Mono&display=swap');
 @import url('https://api.fontshare.com/v2/css?font=satoshi@400,700&font=cabinet-grotesk@400,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 @import "tailwindcss";
 
@@ -37,6 +38,8 @@
 
   --font-satoshi: 'Satoshi', sans-serif;
   --font-cabinet: 'Cabinet Grotesk', sans-serif;
+  --font-instrument: 'Instrument Serif', serif;
+  --font-playfair: 'Playfair Display', serif;
   --radius: 0.5rem;
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -172,6 +175,17 @@ body {
   /* Custom typography integration */
   .font-cabinet {
     font-family: var(--font-cabinet);
+  }
+  .font-instrument {
+    font-family: var(--font-instrument);
+  }
+  .font-playfair {
+    font-family: var(--font-playfair);
+  }
+  .italic-accent {
+    font-family: var(--font-instrument);
+    font-style: italic;
+    font-weight: 400;
   }
 
   /* Premium Designer Mesh Background Layer */

@@ -11,7 +11,7 @@ export default function Testimonials() {
             Testimonials
           </div>
           <h2 className="text-3xl md:text-4xl font-cabinet font-extrabold text-slate-800 mb-4">
-            Real Outcomes from Real Job Seekers
+            <span className="italic-accent text-blue-dark font-normal">Real Outcomes</span> from Real Job Seekers
           </h2>
           <p className="text-slate-500 text-base">
             Read how our users bypassed recruiter filtering blocks and landed interviews at top-tier companies.

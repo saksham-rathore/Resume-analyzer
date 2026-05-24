@@ -10,7 +10,7 @@ export default function Process() {
           Our Process
         </div>
         <h2 className="text-3xl md:text-4xl font-cabinet font-extrabold text-slate-800 mb-4">
-          Get Recruiter-Ready in 4 Simple Steps
+          Get <span className="italic-accent text-blue-dark font-normal">Recruiter-Ready</span> in 4 Simple Steps
         </h2>
         <p className="text-slate-500 text-base">
           Here is how we turn generic, filtered-out resumes into high-impact, interview-landing structures.

@@ -13,7 +13,7 @@ export default function CTA() {
         <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
           <h2 className="text-3xl md:text-5xl font-cabinet font-extrabold text-white mb-6 tracking-tight leading-tight">
             Land More Interviews.<br />
-            Bypass the ATS Blocks.
+            <span className="italic-accent text-blue-light font-normal">Bypass the ATS.</span>
           </h2>
           <p className="text-slate-300 text-base md:text-lg mb-10 leading-relaxed">
             Join 50,000+ software developers, product managers, and designers who use CV-Shield to bypass initial system layers. Check your score now.
