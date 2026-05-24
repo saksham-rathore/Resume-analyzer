@@ -1,4 +1,5 @@
 import React from "react";
+import Connectors from "../UI/Connectors";
 
 export default function Banners() {
     return (
@@ -21,7 +22,7 @@ export default function Banners() {
                         <h2 className="font-display-lg text-headline-lg mb-4">How it Works</h2>
                         <div className="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative"></div>
+                    <Connectors />
                 </div>
             </div>
         </div>
