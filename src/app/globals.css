@@ -74,12 +74,22 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Guarantee native variable mapping for custom CSS rules */
+  --color-primary: #0021e4;
+  --color-secondary: #565e74;
+  --color-tertiary: #3231c1;
+  --color-on-surface: #191c1e;
+  --color-on-surface-variant: #444557;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --color-primary: #bdc2ff;
+    --color-secondary: #bec6e0;
+    --color-tertiary: #c0c1ff;
   }
 }
 
@@ -87,6 +97,15 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body-lg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Text Selection Highlight */
+::selection {
+  background-color: rgba(0, 33, 228, 0.1);
+  color: #0021e4;
 }
 
 /* 3. Custom Utility Classes */
@@ -98,6 +117,13 @@ body {
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 30px 60px -15px rgba(0, 33, 228, 0.08);
+  transform: translateY(-4px);
+  border-color: rgba(0, 33, 228, 0.25);
 }
 
 .glass-nav {
@@ -106,26 +132,31 @@ body {
   border-bottom: 1px solid rgba(117, 118, 136, 0.1);
 }
 
-/* Interactive Hover States - Nav Link Underline */
+/* Premium Navigation Link Slide-in Hover Underline */
 .nav-link {
   position: relative;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .nav-link::after {
   content: '';
   position: absolute;
   bottom: -4px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
   background-color: var(--color-primary);
-  transition: width 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   border-radius: 99px;
 }
 .nav-link:hover::after {
-  width: 100%;
+  transform: scaleX(1);
+  transform-origin: left;
 }
 .nav-link-active::after {
-  width: 100%;
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 /* 4. Animations & Micro-interactions */
@@ -179,9 +210,9 @@ body {
 }
 
 .btn-premium-hover {
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-premium-hover:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 25px -5px rgba(46, 68, 255, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 20px 40px -10px rgba(0, 33, 228, 0.3);
 }
