@@ -68,7 +68,7 @@ export default function Hero() {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-cabinet font-bold leading-[1.2] tracking-tight mb-6 text-slate-800">
             <span className="font-normal text-slate-500">Perfect Your </span>
             <span className="italic-accent text-blue-dark font-normal">Resume.</span><br />
-            <span className="text-effect-gradient pb-1">Conquer the </span>
+            <span className="text-effect-gradient pb-1 font-normal">Conquer the </span>
             <span className="italic-accent text-blue-dark font-normal">ATS.</span>
           </h1>
 

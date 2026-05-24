@@ -229,7 +229,7 @@ export default function Simulator() {
                   />
                 </svg>
                 <div className="absolute flex flex-col items-center justify-center">
-                  <span className="text-5xl font-cabinet font-black text-slate-800 transition-all duration-300">
+                  <span className="text-5xl font-cabinet font-black text-slate-800">
                     {currentScore}
                   </span>
                   <span className="text-xs font-bold text-slate-50 tracking-widest mt-1 bg-blue-normal px-2 py-0.5 rounded-md">
