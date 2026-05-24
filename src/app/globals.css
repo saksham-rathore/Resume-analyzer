@@ -18,12 +18,10 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body-lg); /* Fallback to custom font */
+  font-family: var(--font-body-lg); 
 }
 
-/* 2. Inject Tailwind CSS v4 Theme Config */
 @theme {
-  /* Colors */
   --color-on-tertiary-container: #dbdaff;
   --color-primary-fixed-dim: #bdc2ff;
   --color-on-secondary-fixed: #131b2e;
