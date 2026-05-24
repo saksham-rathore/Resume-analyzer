@@ -1,25 +1,6 @@
 @import "tailwindcss";
 
-/* 1. Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body-lg); 
-}
 
 @theme {
   --color-on-tertiary-container: #dbdaff;
@@ -70,20 +51,17 @@ body {
   --color-secondary-fixed-dim: #bec6e0;
   --color-primary-container: #2e44ff;
 
-  /* Custom Border Radius */
   --radius-default: 0.25rem;
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
   --radius-full: 9999px;
 
-  /* Custom Spacing */
   --spacing-container-max: 1280px;
   --spacing-margin-desktop: 40px;
   --spacing-gutter: 24px;
   --spacing-base: 8px;
   --spacing-margin-mobile: 16px;
 
-  /* Custom Typography / Font Families */
   --font-body-lg: "Inter", sans-serif;
   --font-label-sm: "Inter", sans-serif;
   --font-headline-lg-mobile: "Plus Jakarta Sans", sans-serif;
@@ -94,99 +72,20 @@ body {
   --font-display-lg: "Plus Jakarta Sans", sans-serif;
 }
 
-/* 3. Custom Utility Classes */
-.material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-}
-
-.glass-nav {
-  background: rgba(247, 249, 251, 0.75);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(117, 118, 136, 0.1);
-}
-
-/* Interactive Hover States - Nav Link Underline */
-.nav-link {
-  position: relative;
-}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  transition: width 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
-  border-radius: 99px;
-}
-.nav-link:hover::after {
-  width: 100%;
-}
-.nav-link-active::after {
-  width: 100%;
-}
-
-/* 4. Animations & Micro-interactions */
-@media (prefers-reduced-motion: no-preference) {
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Floating animation */
-  @keyframes float {
-    0% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(1deg); }
-    100% { transform: translateY(0px) rotate(0deg); }
-  }
-  .animate-float {
-    animation: float 8s ease-in-out infinite;
-  }
-
-  /* ATS Score Shimmer animation */
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
-  .shimmer-effect {
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite linear;
-  }
-
-  /* Feature Card 3D Lift */
-  .feature-card {
-    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
-    perspective: 1000px;
-  }
-  .feature-card:hover {
-    transform: translateY(-12px) rotateX(2deg) rotateY(1deg);
-    box-shadow: 0 25px 50px -12px rgba(0, 33, 228, 0.15);
-  }
-
-  /* Magnetic target responsiveness */
-  .magnetic-wrap {
-    display: inline-block;
-    transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 
-.btn-premium-hover {
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.btn-premium-hover:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 25px -5px rgba(46, 68, 255, 0.4);
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body-lg);
 }
