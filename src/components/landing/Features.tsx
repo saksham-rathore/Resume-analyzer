@@ -10,8 +10,9 @@ export default function Features() {
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-light border border-blue-light-active text-blue-dark text-xs font-semibold uppercase mb-4">
             Core Capabilities
           </div>
-          <h2 className="text-3xl md:text-4xl font-cabinet font-extrabold text-slate-800 mb-4">
-            Engineered for <span className="italic-accent text-blue-dark font-normal">High-Conversion Resumes</span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[1.1] mb-4 text-slate-800">
+            <span className="font-satoshi font-normal text-slate-800">Engineered for High-Conversion </span>
+            <span className="font-playfair font-normal text-slate-800">Resumes.</span>
           </h2>
           <p className="text-slate-500 text-base">
             Discover the deep analytical checks conducted automatically on every PDF uploaded to the CV-Shield engine.
@@ -28,7 +29,7 @@ export default function Features() {
             </div>
             <h3 className="font-cabinet font-bold text-base text-slate-800 mb-3">ATS Format Validator</h3>
             <p className="text-xs text-slate-505 leading-relaxed">
-              Identifies parsing limitations like tables, graphics, fonts, header formats, and multi-column divisions.
+              Identifies parsing limitations like <span className="italic-accent text-slate-700">tables, graphics</span>, fonts, header formats, and <span className="italic-accent text-slate-700">multi-column divisions</span>.
             </p>
           </div>
 
@@ -41,7 +42,7 @@ export default function Features() {
             </div>
             <h3 className="font-cabinet font-bold text-base text-slate-800 mb-3">Keyword & Match Audit</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Compares CV contents against hundreds of real job listings to highlight essential missing technologies.
+              Compares <span className="italic-accent text-slate-700">CV contents</span> against hundreds of real job listings to highlight essential <span className="italic-accent text-slate-700">missing technologies</span>.
             </p>
           </div>
 
@@ -54,7 +55,7 @@ export default function Features() {
             </div>
             <h3 className="font-cabinet font-bold text-base text-slate-800 mb-3">Actionable Impact Check</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Triggers alerts when descriptions lack metric milestones or rely heavily on passive, generic verbs.
+              Triggers alerts when descriptions lack <span className="italic-accent text-slate-700">metric milestones</span> or rely heavily on passive, generic verbs.
             </p>
           </div>
 
@@ -67,7 +68,7 @@ export default function Features() {
             </div>
             <h3 className="font-cabinet font-bold text-base text-slate-800 mb-3">Background Queueing</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Heavy analysis runs asynchronously on BullMQ and Redis, keeping your interface smooth and lag-free.
+              Heavy analysis runs asynchronously on <span className="italic-accent text-slate-700">BullMQ and Redis</span>, keeping your interface smooth and lag-free.
             </p>
           </div>
         </div>

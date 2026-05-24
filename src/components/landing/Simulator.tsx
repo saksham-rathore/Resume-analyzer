@@ -36,11 +36,12 @@ export default function Simulator() {
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-light border border-blue-light-active text-blue-dark text-xs font-semibold uppercase mb-4">
           Interactive Tool
         </div>
-        <h2 className="text-3xl md:text-4xl font-cabinet font-extrabold text-slate-800 mb-4">
-          How Much Do <span className="italic-accent text-blue-dark font-normal">Small Errors</span> Cost You?
+        <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[1.1] mb-4 text-slate-800">
+          <span className="font-satoshi font-normal text-slate-800">How Much Do Small Errors </span>
+          <span className="font-playfair font-normal text-slate-800">Cost You?</span>
         </h2>
         <p className="text-slate-500 text-base md:text-lg">
-          Toggle the most common structural and content mistakes on a typical resume below. See in real-time how modern ATS scanning bots react and downgrade your score.
+          Toggle the most common structural and content mistakes on a <span className="italic-accent text-slate-700">typical resume</span> below. See in real-time how modern <span className="italic-accent text-slate-700">ATS scanning bots</span> react and <span className="italic-accent text-slate-700">downgrade your score</span>.
         </p>
       </div>
 
@@ -220,12 +221,11 @@ export default function Simulator() {
                     cx="76"
                     cy="76"
                     r="64"
-                    stroke={currentScore >= 80 ? '#10b981' : currentScore >= 60 ? '#f59e0b' : '#ef4444'}
+                    stroke="#79a4ff"
                     strokeWidth="8"
                     fill="transparent"
                     strokeDasharray={401.9}
                     strokeDashoffset={401.9 - (401.9 * currentScore) / 100}
-                    className="transition-all duration-500 ease-out"
                   />
                 </svg>
                 <div className="absolute flex flex-col items-center justify-center">
@@ -240,13 +240,7 @@ export default function Simulator() {
 
               {/* Dynamic Rating Message */}
               <div className="text-center mb-6">
-                <span className={`inline-flex px-3.5 py-1 rounded-full text-xs font-bold border ${
-                  currentScore >= 80
-                    ? 'text-emerald-700 bg-emerald-50 border-emerald-100'
-                    : currentScore >= 60
-                    ? 'text-amber-700 bg-amber-50 border-amber-100'
-                    : 'text-red-700 bg-red-50 border-red-100'
-                }`}>
+                <span className="inline-flex px-3.5 py-1 rounded-full text-xs font-bold border text-blue-700 bg-blue-50 border-blue-100">
                   {currentScore >= 80 ? 'Highly Optimised' : currentScore >= 60 ? 'Needs Fixes' : 'Blocked by ATS'}
                 </span>
               </div>

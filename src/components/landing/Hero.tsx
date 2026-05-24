@@ -61,19 +61,19 @@ export default function Hero() {
         {/* Left Content */}
         <div className="lg:col-span-6 flex flex-col items-start text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-light border border-blue-light-active mb-6 animate-float">
-            <span className="flex h-2 w-2 rounded-full bg-blue-normal animate-pulse"></span>
+            <span className="flex h-2 w-2 rounded-full bg-blue-normal"></span>
             <span className="text-xs font-semibold text-blue-dark tracking-wide uppercase">AI-Powered ATS Auditing</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-cabinet font-bold leading-[1.2] tracking-tight mb-6 text-slate-800">
-            <span className="font-normal text-slate-500">Perfect Your </span>
-            <span className="italic-accent text-blue-dark font-normal">Resume.</span><br />
-            <span className="text-effect-gradient pb-1 font-normal">Conquer the </span>
-            <span className="italic-accent text-blue-dark font-normal">ATS.</span>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tighter leading-[1.1] mb-6 text-slate-800">
+            <span className="font-satoshi font-normal text-slate-800">Perfect Your </span>
+            <span className="font-playfair font-normal text-slate-800">Resume.</span><br />
+            <span className="font-satoshi font-normal text-slate-800">Conquer the </span>
+            <span className="font-playfair font-normal text-slate-800">ATS.</span>
           </h1>
 
-          <p className="text-base md:text-lg text-slate-500 leading-relaxed mb-8 max-w-lg">
-            Stop throwing your CV into a black hole. Parse formats, score keyword match densities, and optimize impact phrasing in under 10 seconds. Built on advanced AI models.
+          <p className="text-base md:text-lg text-slate-505 leading-relaxed mb-8 max-w-lg">
+            Stop throwing your <span className="italic-accent text-slate-700">CV</span> into a black hole. Parse formats, score <span className="italic-accent text-slate-700">keyword match densities</span>, and optimize <span className="italic-accent text-slate-700">impact phrasing</span> in under 10 seconds. Built on advanced <span className="italic-accent text-slate-700">AI models</span>.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
@@ -199,7 +199,6 @@ export default function Hero() {
                         fill="transparent"
                         strokeDasharray={251.2}
                         strokeDashoffset={251.2 - (251.2 * 64) / 100}
-                        className="transition-all duration-1000 ease-out"
                       />
                     </svg>
                     <div className="absolute flex flex-col items-center justify-center">
