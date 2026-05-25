@@ -59,17 +59,15 @@ export default function Simulator() {
             {/* Checklist Item 1 */}
             <button
               onClick={() => toggleFlaw('genericName')}
-              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${
-                simulatorFlaws.genericName
-                  ? 'border-blue-normal bg-blue-light/30'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
+              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${simulatorFlaws.genericName
+                ? 'border-blue-normal bg-blue-light/30'
+                : 'border-slate-200 bg-white hover:border-slate-300'
+                }`}
             >
-              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
-                simulatorFlaws.genericName
-                  ? 'border-blue-normal bg-blue-normal text-white'
-                  : 'border-slate-300 bg-white'
-              }`}>
+              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${simulatorFlaws.genericName
+                ? 'border-blue-normal bg-blue-normal text-white'
+                : 'border-slate-300 bg-white'
+                }`}>
                 {simulatorFlaws.genericName && (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -88,17 +86,15 @@ export default function Simulator() {
             {/* Checklist Item 2 */}
             <button
               onClick={() => toggleFlaw('noMetrics')}
-              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${
-                simulatorFlaws.noMetrics
-                  ? 'border-blue-normal bg-blue-light/30'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
+              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${simulatorFlaws.noMetrics
+                ? 'border-blue-normal bg-blue-light/30'
+                : 'border-slate-200 bg-white hover:border-slate-300'
+                }`}
             >
-              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
-                simulatorFlaws.noMetrics
-                  ? 'border-blue-normal bg-blue-normal text-white'
-                  : 'border-slate-300 bg-white'
-              }`}>
+              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${simulatorFlaws.noMetrics
+                ? 'border-blue-normal bg-blue-normal text-white'
+                : 'border-slate-300 bg-white'
+                }`}>
                 {simulatorFlaws.noMetrics && (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -117,17 +113,15 @@ export default function Simulator() {
             {/* Checklist Item 3 */}
             <button
               onClick={() => toggleFlaw('multiColumn')}
-              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${
-                simulatorFlaws.multiColumn
-                  ? 'border-blue-normal bg-blue-light/30'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
+              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${simulatorFlaws.multiColumn
+                ? 'border-blue-normal bg-blue-light/30'
+                : 'border-slate-200 bg-white hover:border-slate-300'
+                }`}
             >
-              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
-                simulatorFlaws.multiColumn
-                  ? 'border-blue-normal bg-blue-normal text-white'
-                  : 'border-slate-300 bg-white'
-              }`}>
+              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${simulatorFlaws.multiColumn
+                ? 'border-blue-normal bg-blue-normal text-white'
+                : 'border-slate-300 bg-white'
+                }`}>
                 {simulatorFlaws.multiColumn && (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -146,17 +140,15 @@ export default function Simulator() {
             {/* Checklist Item 4 */}
             <button
               onClick={() => toggleFlaw('missingKeywords')}
-              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${
-                simulatorFlaws.missingKeywords
-                  ? 'border-blue-normal bg-blue-light/30'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
+              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${simulatorFlaws.missingKeywords
+                ? 'border-blue-normal bg-blue-light/30'
+                : 'border-slate-200 bg-white hover:border-slate-300'
+                }`}
             >
-              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
-                simulatorFlaws.missingKeywords
-                  ? 'border-blue-normal bg-blue-normal text-white'
-                  : 'border-slate-300 bg-white'
-              }`}>
+              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${simulatorFlaws.missingKeywords
+                ? 'border-blue-normal bg-blue-normal text-white'
+                : 'border-slate-300 bg-white'
+                }`}>
                 {simulatorFlaws.missingKeywords && (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
@@ -175,17 +167,15 @@ export default function Simulator() {
             {/* Checklist Item 5 */}
             <button
               onClick={() => toggleFlaw('unprofessionalEmail')}
-              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${
-                simulatorFlaws.unprofessionalEmail
-                  ? 'border-blue-normal bg-blue-light/30'
-                  : 'border-slate-200 bg-white hover:border-slate-300'
-              }`}
+              className={`w-full text-left p-4.5 rounded-2xl border transition-all duration-300 flex items-start gap-4 ${simulatorFlaws.unprofessionalEmail
+                ? 'border-blue-normal bg-blue-light/30'
+                : 'border-slate-200 bg-white hover:border-slate-300'
+                }`}
             >
-              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${
-                simulatorFlaws.unprofessionalEmail
-                  ? 'border-blue-normal bg-blue-normal text-white'
-                  : 'border-slate-300 bg-white'
-              }`}>
+              <div className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-all ${simulatorFlaws.unprofessionalEmail
+                ? 'border-blue-normal bg-blue-normal text-white'
+                : 'border-slate-300 bg-white'
+                }`}>
                 {simulatorFlaws.unprofessionalEmail && (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />

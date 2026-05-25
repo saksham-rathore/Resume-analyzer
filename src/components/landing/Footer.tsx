@@ -10,23 +10,6 @@ export default function Footer() {
 
       <div className="landing-content-width mx-auto relative z-10">
         
-        {/* Pixel Perfect Banner Element - Mimics the exact screenshot shape and feel, adapted to Premium Light Mode */}
-        <div className="w-full flex justify-center mb-16">
-          <div className="w-full max-w-2xl bg-slate-50/80 backdrop-blur-md border border-slate-200/80 rounded-2xl px-8 py-10 sm:px-12 sm:py-12 flex flex-col items-center justify-center relative overflow-hidden transition-all duration-500 hover:border-slate-300 hover:shadow-2xl hover:shadow-slate-100/80 hover:-translate-y-1 group">
-            
-            {/* Retro-cybernetic corner detail lines */}
-            <div className="absolute top-3 left-3 w-3 h-3 border-t-2 border-l-2 border-slate-300 group-hover:border-slate-500 transition-colors duration-300"></div>
-            <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-slate-300 group-hover:border-slate-500 transition-colors duration-300"></div>
-            <div className="absolute bottom-3 left-3 w-3 h-3 border-b-2 border-l-2 border-slate-300 group-hover:border-slate-500 transition-colors duration-300"></div>
-            <div className="absolute bottom-3 right-3 w-3 h-3 border-b-2 border-r-2 border-slate-300 group-hover:border-slate-500 transition-colors duration-300"></div>
-            
-            {/* Blueprint guidelines */}
-            <div className="absolute inset-x-5 top-5 border-t border-slate-200/50 border-dashed pointer-events-none"></div>
-            <div className="absolute inset-y-5 left-5 border-l border-slate-200/50 border-dashed pointer-events-none"></div>
-            <div className="absolute inset-x-5 bottom-5 border-b border-slate-200/50 border-dashed pointer-events-none"></div>
-            <div className="absolute inset-y-5 right-5 border-r border-slate-200/50 border-dashed pointer-events-none"></div>
-          </div>
-        </div>
 
         {/* Cenra-inspired 5-Column Grid with vertical border lines */}
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-0 border-t border-slate-200/60 pt-16 pb-12">
@@ -136,7 +119,7 @@ export default function Footer() {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             <p>Active Node System Diagnostics: ONLINE</p>
           </div>
-          <p className="font-pixel text-[8px] tracking-widest uppercase text-slate-400 select-none">
+          <p className="font-cormorant text-[8px] tracking-widest uppercase text-slate-400 select-none">
             POWERED BY DRIZZLE // BULLMQ // AI MODELING
           </p>
         </div>
