@@ -12,9 +12,9 @@ export default function CTA() {
 
         <div className="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[1.1] mb-6 text-white text-center">
-            <span className="font-satoshi font-normal text-white">Land More Interviews.</span><br />
-            <span className="font-satoshi font-normal text-white">Ready to Bypass the </span>
-            <span className="font-playfair font-normal text-white">ATS?</span>
+            <span className="font-cabinet font-normal text-white">Land More Interviews.</span><br />
+            <span className="font-cabinet font-normal text-white">Ready to Bypass the </span>
+            <span className="font-cormorant italic font-normal text-blue-normal tracking-wide pr-2">ATS?</span>
           </h2>
           <p className="text-slate-300 text-base md:text-lg mb-10 leading-relaxed">
             Join 50,000+ software developers, product managers, and designers who use CV-Shield to bypass initial system layers. Check your score now.

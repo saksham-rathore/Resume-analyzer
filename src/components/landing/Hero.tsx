@@ -60,30 +60,35 @@ export default function Hero() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
         {/* Left Content */}
         <div className="lg:col-span-6 flex flex-col items-start text-left">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-light border border-blue-light-active mb-6 animate-float">
-            <span className="flex h-2 w-2 rounded-full bg-blue-normal"></span>
-            <span className="text-xs font-semibold text-blue-dark tracking-wide uppercase">AI-Powered ATS Auditing</span>
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/70 border border-blue-light-active/40 shadow-sm backdrop-blur-md mb-8 animate-float">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-normal opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-normal"></span>
+            </span>
+            <span className="text-[10px] font-bold text-blue-dark tracking-wider uppercase font-cabinet">
+              AI-Powered ATS Auditing
+            </span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tighter leading-[1.1] mb-6 text-slate-800">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl tracking-tighter leading-[1.1] mb-6 text-slate-800 italic">
             <span className="font-satoshi font-normal text-slate-800">Perfect Your </span>
             <span className="font-playfair font-normal text-slate-800">Resume.</span><br />
             <span className="font-satoshi font-normal text-slate-800">Conquer the </span>
             <span className="font-playfair font-normal text-slate-800">ATS.</span>
           </h1>
 
-          <p className="text-base md:text-lg text-slate-505 leading-relaxed mb-8 max-w-lg">
-            Stop throwing your <span className="italic-accent text-slate-700">CV</span> into a black hole. Parse formats, score <span className="italic-accent text-slate-700">keyword match densities</span>, and optimize <span className="italic-accent text-slate-700">impact phrasing</span> in under 10 seconds. Built on advanced <span className="italic-accent text-slate-700">AI models</span>.
+          <p className="text-base md:text-lg text-slate-500 leading-relaxed mb-10 max-w-lg font-satoshi font-normal">
+            Stop throwing your <span className="font-cormorant italic text-lg text-slate-800 tracking-wide font-normal">CV</span> into a black hole. Parse formats, score <span className="font-cormorant italic text-lg text-slate-800 tracking-wide font-normal">keyword match densities</span>, and optimize <span className="font-cormorant italic text-lg text-slate-800 tracking-wide font-normal">impact phrasing</span> in under 10 seconds. Built on advanced <span className="font-cormorant italic text-lg text-slate-800 tracking-wide font-normal">AI models</span>.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <a href="#upload-widget" className="btn-designer px-8 py-4 rounded-xl text-base shadow-md justify-center">
+            <a href="#upload-widget" className="btn-designer px-8 py-4 rounded-2xl text-base shadow-lg justify-center font-cabinet font-semibold tracking-wide gap-2 group">
               Analyze Resume Now
-              <svg className="w-5 h-5 ml-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
               </svg>
             </a>
-            <a href="#simulator" className="btn-designer-outline px-8 py-4 rounded-xl text-base justify-center">
+            <a href="#simulator" className="btn-designer-outline px-8 py-4 rounded-2xl text-base justify-center font-cabinet font-semibold tracking-wide hover:shadow-md transition-all duration-300">
               Try ATS Simulator
             </a>
           </div>
@@ -130,14 +135,14 @@ export default function Hero() {
                   accept=".pdf,.docx"
                   className="hidden"
                 />
-                <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center border border-slate-100 text-blue-normal mb-5">
+                <div className="w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center border border-slate-100/80 text-blue-normal mb-5 transition-transform duration-300 hover:scale-110 hover:rotate-3">
                   <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
                 </div>
-                <h3 className="font-cabinet font-semibold text-lg text-slate-800 mb-2">Upload your resume</h3>
-                <p className="text-sm text-slate-500 max-w-xs mb-4">
-                  Drag & drop your file here, or <span className="text-blue-normal font-semibold underline">browse computer</span>
+                <h3 className="font-cormorant italic text-2xl text-slate-800 mb-2 font-normal">Upload your resume</h3>
+                <p className="text-sm text-slate-500 max-w-xs mb-4 font-satoshi">
+                  Drag & drop your file here, or <span className="text-blue-normal font-semibold underline hover:text-blue-normal-hover transition-colors">browse computer</span>
                 </p>
                 <span className="text-xs text-slate-500 bg-slate-100/80 px-2.5 py-1 rounded-md border border-slate-200/50">
                   Supports PDF, DOCX (Max 10MB)
@@ -202,13 +207,13 @@ export default function Hero() {
                       />
                     </svg>
                     <div className="absolute flex flex-col items-center justify-center">
-                      <span className="text-3xl font-cabinet font-extrabold text-slate-800">64</span>
-                      <span className="text-[10px] font-semibold text-slate-500">ATS SCORE</span>
+                      <span className="text-3.5xl font-cabinet font-bold text-slate-800 leading-none">64</span>
+                      <span className="text-[9px] font-cabinet tracking-widest text-slate-400 font-bold uppercase mt-1">ATS Score</span>
                     </div>
                   </div>
 
                   <div className="flex-1 text-center md:text-left">
-                    <h4 className="font-cabinet font-bold text-sm text-slate-800 mb-1">
+                    <h4 className="font-cormorant italic text-base text-slate-800 mb-1 font-semibold">
                       Needs Key Adjustments
                     </h4>
                     <p className="text-xs text-slate-500 leading-relaxed">

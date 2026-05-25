@@ -11,8 +11,8 @@ export default function Features() {
             Core Capabilities
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tighter leading-[1.1] mb-4 text-slate-800">
-            <span className="font-satoshi font-normal text-slate-800">Engineered for High-Conversion </span>
-            <span className="font-playfair font-normal text-slate-800">Resumes.</span>
+            <span className="font-cabinet font-normal text-slate-800 whitespace-nowrap flex mid">Engineered for High-Conversion </span>
+            <span className="font-cormorant italic font-normal text-blue-dark tracking-wide pr-2">Resumes.</span>
           </h2>
           <p className="text-slate-500 text-base">
             Discover the deep analytical checks conducted automatically on every PDF uploaded to the CV-Shield engine.
