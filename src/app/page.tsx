@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="mesh-bg min-h-screen flex flex-col font-sans">
       <Navbar />
-      
+
       <main className="flex-1 landing-sections-stack py-12">
         <Hero />
         <Stats />
@@ -23,9 +23,9 @@ export default function Home() {
         <Testimonials />
         <CTA />
 
-        
+
       </main>
-      
+
       <Footer />
     </div>
   );

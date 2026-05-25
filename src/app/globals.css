@@ -49,7 +49,6 @@
   --radius-sm: calc(var(--radius) - 4px);
   --radius-inherit: inherit;
 
-  /* Document scanner and float keyframes */
   --animate-float: float 8s ease-in-out infinite;
   --animate-scan: scan 3s ease-in-out infinite;
 
@@ -127,7 +126,6 @@ body {
     scrollbar-width: none;
   }
 
-  /* Global typography overrides to thin all bold/thick fonts */
   h1, h2, h3, h4, h5, h6,
   .font-bold, .font-extrabold, .font-black {
     font-weight: 400 !important;
@@ -181,7 +179,6 @@ body {
     }
   }
 
-  /* Custom typography integration */
   .font-cabinet {
     font-family: var(--font-cabinet);
   }
@@ -204,7 +201,6 @@ body {
     letter-spacing: 0.01em;
   }
 
-  /* Premium Designer Mesh Background Layer */
   .mesh-bg {
     position: relative;
     background-color: transparent;
@@ -235,7 +231,6 @@ body {
     z-index: 0;
   }
 
-  /* Glass Card adapted for custom colors */
   .glass-card-premium {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(16px);
@@ -260,7 +255,6 @@ body {
     border-color: rgba(121, 164, 255, 0.35);
   }
 
-  /* Buttons adapted for custom blue theme */
   .btn-designer {
     background: linear-gradient(135deg, #79a4ff 0%, #4f46e5 100%);
     color: #ffffff;
@@ -299,7 +293,6 @@ body {
     transform: translateY(-1px);
   }
 
-  /* Slide-in navigation underline */
   .nav-link {
     position: relative;
     font-weight: 500;
@@ -327,7 +320,6 @@ body {
     transform-origin: left;
   }
 
-  /* Font selection highlights */
   .text-effect-video {
     background-image: url('https://i.pinimg.com/originals/80/b7/5e/80b75eb774b647c67b2efa531b57ba13.gif');
     background-size: cover;

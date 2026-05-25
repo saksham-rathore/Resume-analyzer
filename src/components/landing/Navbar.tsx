@@ -1,8 +1,10 @@
 'use client';
-
 import React from 'react';
+import { useSession, signOut } from "next-auth/react";
 
 export default function Navbar() {
+  const { data: session, status } = useSession();
+
   return (
     <header className="glass-nav sticky top-0 w-full z-50 transition-all duration-300">
       <div className="landing-content-width mx-auto h-18 flex items-center justify-between">
@@ -27,12 +29,33 @@ export default function Navbar() {
 
         {/* Nav Actions */}
         <div className="flex items-center gap-4">
-          <a href="/signIn" className="text-sm font-semibold text-slate-600 hover:text-blue-normal transition-colors">
-            Sign In
-          </a>
-          <a href="/signup" className="btn-designer px-5 py-2.5 rounded-xl text-sm shadow-sm">
-            Get Started Free
-          </a>
+          {status === "loading" ? (
+            <div className="h-8 w-20 bg-slate-100 rounded-lg animate-pulse" />
+          ) : session ? (
+            <div className="flex items-center gap-4">
+              <span className="text-sm font-medium text-slate-700">
+                Hi, {session.user?.name || session.user?.email?.split('@')[0]}
+              </span>
+              <a href="/Dashboard" className="text-sm font-semibold text-slate-600 hover:text-blue-normal transition-colors">
+                Dashboard
+              </a>
+              <button 
+                onClick={() => signOut({ callbackUrl: "/" })}
+                className="btn-designer px-4 py-2 rounded-xl text-sm shadow-sm cursor-pointer"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <>
+              <a href="/signIn" className="text-sm font-semibold text-slate-600 hover:text-blue-normal transition-colors">
+                Sign In
+              </a>
+              <a href="/signup" className="btn-designer px-5 py-2.5 rounded-xl text-sm shadow-sm">
+                Get Started Free
+              </a>
+            </>
+          )}
         </div>
       </div>
     </header>

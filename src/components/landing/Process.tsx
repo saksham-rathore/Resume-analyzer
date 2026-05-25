@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useInView } from 'framer-motion';
 
 const steps = [
   {
@@ -47,6 +48,8 @@ const steps = [
 
 export default function Process() {
   const [activeItems, setActiveItems] = useState<Record<string, boolean>>({});
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   const runAnimation = () => {
     setActiveItems({});
@@ -69,9 +72,11 @@ export default function Process() {
   };
 
   useEffect(() => {
-    const timers = runAnimation();
-    return () => timers.forEach(clearTimeout);
-  }, []);
+    if (isInView) {
+      const timers = runAnimation();
+      return () => timers.forEach(clearTimeout);
+    }
+  }, [isInView]);
 
   const getProgressWidth = () => {
     if (activeItems.l3) return '100%';
@@ -93,7 +98,11 @@ export default function Process() {
   };
 
   return (
-    <section id="process" className="py-24 px-6 bg-slate-50/20 border-y border-slate-200/20 relative overflow-hidden">
+    <section
+      id="process"
+      ref={sectionRef}
+      className="py-24 px-6 bg-slate-50/20 border-y border-slate-200/20 relative overflow-hidden"
+    >
       <h2 className="sr-only">4-step process: Secure Upload, Job Description Match, Deep AI Audit, Actionable Fixes — animated stepper</h2>
 
       <div className="landing-content-width mx-auto relative z-10">
