@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 1. Find user in the database using Drizzle
     const [user] = await db
       .select()
       .from(users)
@@ -34,7 +33,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 2. Check if the password matches (drizzle uses lowercase users.password)
     if (!user.password) {
       return NextResponse.json(
         { message: "This account does not have a password set" },
@@ -51,7 +49,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 3. Return success (Note: This does not set NextAuth cookies!)
     return NextResponse.json(
       { 
         message: "Login successful!", 

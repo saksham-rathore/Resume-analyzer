@@ -15,7 +15,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Check if user already exists using Drizzle
     const [existingUser] = await db
       .select()
       .from(users)
@@ -34,12 +33,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUserId = crypto.randomUUID();
 
-    // Create the user in the database using Drizzle
     await db.insert(users).values({
       id: newUserId,
       name: name,

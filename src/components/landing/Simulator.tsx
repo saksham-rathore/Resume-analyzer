@@ -53,7 +53,6 @@ export default function Simulator() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
-        {/* Interactive Checklist (Left) */}
         <div className="lg:col-span-7 flex flex-col justify-between">
           <div className="space-y-4">
             <h3 className="font-cabinet font-bold text-xl text-slate-800 mb-5 flex items-center gap-2.5">
@@ -63,7 +62,6 @@ export default function Simulator() {
               Select Common Resume Flaws
             </h3>
 
-            {/* Checklist Item 1 */}
             <motion.button
               onClick={() => toggleFlaw('genericName')}
               whileHover={{ scale: 1.01, y: -2 }}
@@ -104,7 +102,6 @@ export default function Simulator() {
               </span>
             </motion.button>
 
-            {/* Checklist Item 2 */}
             <motion.button
               onClick={() => toggleFlaw('noMetrics')}
               whileHover={{ scale: 1.01, y: -2 }}
@@ -145,7 +142,6 @@ export default function Simulator() {
               </span>
             </motion.button>
 
-            {/* Checklist Item 3 */}
             <motion.button
               onClick={() => toggleFlaw('multiColumn')}
               whileHover={{ scale: 1.01, y: -2 }}
@@ -186,7 +182,6 @@ export default function Simulator() {
               </span>
             </motion.button>
 
-            {/* Checklist Item 4 */}
             <motion.button
               onClick={() => toggleFlaw('missingKeywords')}
               whileHover={{ scale: 1.01, y: -2 }}
@@ -227,7 +222,6 @@ export default function Simulator() {
               </span>
             </motion.button>
 
-            {/* Checklist Item 5 */}
             <motion.button
               onClick={() => toggleFlaw('unprofessionalEmail')}
               whileHover={{ scale: 1.01, y: -2 }}
@@ -270,7 +264,6 @@ export default function Simulator() {
           </div>
         </div>
 
-        {/* Dynamic Results Display (Right) */}
         <div className="lg:col-span-5 flex">
           <div className="glass-card-premium w-full rounded-3xl p-8 border flex flex-col justify-between shadow-sm relative overflow-hidden">
             <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] -z-10 rounded-3xl"></div>
@@ -280,7 +273,6 @@ export default function Simulator() {
                 ATS Audit Simulator
               </h3>
 
-              {/* Radial Progress Display */}
               <div className="relative w-44 h-44 mx-auto flex items-center justify-center bg-white rounded-full border border-slate-100 shadow-md mb-8">
                 <svg className="w-38 h-38 transform -rotate-90">
                   <circle cx="76" cy="76" r="64" stroke="#f1f5f9" strokeWidth="8" fill="transparent" />
@@ -311,7 +303,6 @@ export default function Simulator() {
                 </div>
               </div>
 
-              {/* Dynamic Rating Message */}
               <div className="text-center mb-6 h-6 flex items-center justify-center">
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -333,7 +324,6 @@ export default function Simulator() {
                 </AnimatePresence>
               </div>
 
-              {/* Live Feed recommendation */}
               <div className="border-t border-slate-100 pt-5 space-y-4 text-left">
                 <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider">
                   Live AI Recommendations

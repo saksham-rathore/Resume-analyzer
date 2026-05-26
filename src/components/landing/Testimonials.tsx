@@ -19,7 +19,6 @@ export default function Testimonials() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Review 1 */}
           <div className="glass-card-premium rounded-3xl p-8 border bg-white flex flex-col justify-between shadow-sm relative">
             <div>
               <div className="flex items-center gap-1.5 mb-6 text-amber-500">
@@ -47,7 +46,6 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Review 2 */}
           <div className="glass-card-premium rounded-3xl p-8 border bg-white flex flex-col justify-between shadow-sm relative">
             <div>
               <div className="flex items-center gap-1.5 mb-6 text-amber-500">

@@ -48,7 +48,6 @@ export default function SignUpPage() {
     setIsLoading(true);
 
     try {
-      // 1. Post registration details to the signup API
       const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -63,7 +62,6 @@ export default function SignUpPage() {
 
       setSuccessMsg('Account created successfully! Logging you in...');
 
-      // 2. Automatically log the user in using Drizzle credentials
       const signinRes = await signIn('credentials', {
         email,
         password,
@@ -90,7 +88,6 @@ export default function SignUpPage() {
     signIn(provider, { callbackUrl: '/Dashboard' });
   };
 
-  // Entrance animation configs
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -111,10 +108,8 @@ export default function SignUpPage() {
   return (
     <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 overflow-hidden bg-white text-slate-800 font-sans">
 
-      {/* LEFT COLUMN: Form Container */}
       <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-10 xl:p-14 min-h-screen bg-white">
 
-        {/* Brand Logo */}
         <div className="flex items-center gap-2.5">
           <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-normal to-blue-dark flex items-center justify-center shadow-sm">
             <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -126,7 +121,6 @@ export default function SignUpPage() {
           </span>
         </div>
 
-        {/* Auth Form Box */}
         <motion.div
           className="my-auto py-8 w-full max-w-md mx-auto"
           variants={containerVariants}
@@ -142,7 +136,6 @@ export default function SignUpPage() {
             </p>
           </motion.div>
 
-          {/* Social Sign-In Buttons */}
           <motion.div variants={itemVariants} className="grid grid-cols-2 gap-3 mb-5">
             <button
               type="button"
@@ -191,9 +184,7 @@ export default function SignUpPage() {
             </span>
           </motion.div>
 
-          {/* Form Fields */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            {/* Feedback Alerts */}
             <AnimatePresence mode="wait">
               {errorMsg && (
                 <motion.div
@@ -310,17 +301,14 @@ export default function SignUpPage() {
           </motion.p>
         </motion.div>
 
-        {/* Footer Text */}
         <div className="text-center lg:text-left text-xs text-slate-400 font-medium">
           © {new Date().getFullYear()} CVShield. Secure ATS Resume Analytics.
         </div>
 
       </div>
 
-      {/* RIGHT COLUMN: Artwork panel */}
       <div className="hidden lg:flex lg:col-span-7 xl:col-span-7 relative h-screen bg-slate-950 flex-col items-center justify-center p-4 sm:p-6 lg:p-6 xl:p-8 overflow-hidden">
 
-        {/* Soft dynamic ambient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-slate-950/10 z-10 pointer-events-none" />
 
         <motion.div
@@ -376,49 +364,38 @@ export default function SignUpPage() {
               `}</style>
             </defs>
 
-            {/* Background card */}
             <rect x="20" y="20" width="640" height="520" rx="20" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
 
-            {/* Ambient glow circles */}
             <circle cx="150" cy="140" r="90" fill="rgba(255,255,255,0.04)" style={{ animation: 'ambientGlow 8s ease-in-out infinite', transformOrigin: '150px 140px' }} />
             <circle cx="530" cy="400" r="110" fill="rgba(255,255,255,0.03)" style={{ animation: 'ambientGlow 10s ease-in-out infinite', animationDelay: '1.2s', transformOrigin: '530px 400px' }} />
 
-            {/* TITLE */}
             <text x="340" y="58" textAnchor="middle" fontSize="17" fill="rgba(255,255,255,0.9)" fontFamily="var(--font-cabinet)" fontWeight="700">Resume Analyser</text>
             <text x="340" y="76" textAnchor="middle" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">AI-powered candidate screening pipeline</text>
             <line x1="80" y1="88" x2="600" y2="88" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
 
-            {/* STAGE 1 — Upload (Width: 130, Height: 162) */}
             <g>
               <rect x="44" y="102" width="130" height="162" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" strokeWidth="0.5" />
               <text x="109" y="122" textAnchor="middle" fill="rgba(255, 255, 255, 0.5)" fontSize="11" fontFamily="var(--font-cabinet)">01 — upload</text>
 
-              {/* Document icon */}
               <rect x="71" y="130" width="76" height="90" rx="6" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.3)" strokeWidth="0.7" />
-              {/* Document lines */}
               <line x1="81" y1="150" x2="137" y2="150" stroke="rgba(255,255,255,0.35)" strokeWidth="1.8" strokeLinecap="round" />
               <line x1="81" y1="162" x2="129" y2="162" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" />
               <line x1="81" y1="174" x2="137" y2="174" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" />
               <line x1="81" y1="186" x2="125" y2="186" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" strokeLinecap="round" />
               <line x1="81" y1="198" x2="117" y2="198" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" strokeLinecap="round" />
-              {/* PDF badge */}
               <rect x="92" y="208" width="34" height="14" rx="4" fill="rgba(255,255,255,0.2)" />
               <text x="109" y="219" textAnchor="middle" fontSize="9.5" fontFamily="var(--font-cabinet)" fill="white" fontWeight="700">PDF</text>
 
               <text x="109" y="246" textAnchor="middle" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">Resume file</text>
             </g>
 
-            {/* Arrow 1→2 (Symmetric spacing & centered) */}
             <line x1="174" y1="183" x2="192" y2="183" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" markerEnd="url(#arrow)" strokeDasharray="6 4" />
 
-            {/* STAGE 2 — Parse (Width: 130, Height: 162) */}
             <g>
               <rect x="196" y="102" width="130" height="162" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" strokeWidth="0.5" />
               <text x="261" y="122" textAnchor="middle" fill="rgba(255, 255, 255, 0.5)" fontSize="11" fontFamily="var(--font-cabinet)">02 — parse</text>
 
-              {/* Scanning animation area */}
               <rect x="210" y="132" width="102" height="92" rx="5" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" strokeWidth="0.5" />
-              {/* Static text lines */}
               <line x1="218" y1="146" x2="304" y2="146" stroke="rgba(255,255,255,0.15)" strokeWidth="1.2" strokeLinecap="round" />
               <line x1="218" y1="156" x2="294" y2="156" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeLinecap="round" />
               <line x1="218" y1="166" x2="300" y2="166" stroke="rgba(255,255,255,0.12)" strokeWidth="1" strokeLinecap="round" />
@@ -426,10 +403,8 @@ export default function SignUpPage() {
               <line x1="218" y1="186" x2="298" y2="186" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeLinecap="round" />
               <line x1="218" y1="196" x2="282" y2="196" stroke="rgba(255,255,255,0.1)" strokeWidth="1" strokeLinecap="round" />
               
-              {/* Scan beam */}
               <line x1="210" y1="134" x2="312" y2="134" stroke="rgba(255,255,255,0.7)" strokeWidth="1.2" style={{ animation: 'scanEffect 3s ease-in-out infinite' }} />
 
-              {/* Extracted tokens */}
               <rect x="212" y="230" width="36" height="12" rx="3" fill="rgba(255,255,255,0.14)" />
               <text x="230" y="239.5" textAnchor="middle" fontSize="9" fontFamily="var(--font-satoshi)" fill="rgba(255,255,255,0.7)">Skills</text>
               <rect x="254" y="230" width="34" height="12" rx="3" fill="rgba(255,255,255,0.14)" />
@@ -440,29 +415,22 @@ export default function SignUpPage() {
               <text x="261" y="252" textAnchor="middle" fill="rgba(255, 255, 255, 0.65)" fontSize="11" fontFamily="var(--font-satoshi)">Extracted fields</text>
             </g>
 
-            {/* Arrow 2→3 */}
             <line x1="326" y1="183" x2="344" y2="183" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" markerEnd="url(#arrow)" strokeDasharray="6 4" />
 
-            {/* STAGE 3 — AI Analyse (Width: 130, Height: 162) */}
             <g>
               <rect x="348" y="102" width="130" height="162" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" strokeWidth="0.5" />
               <text x="413" y="122" textAnchor="middle" fill="rgba(255, 255, 255, 0.5)" fontSize="11" fontFamily="var(--font-cabinet)">03 — analyse</text>
 
-              {/* Neural net nodes */}
-              {/* Input layer */}
               <circle cx="370" cy="146" r="6" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
               <circle cx="370" cy="169" r="6" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
               <circle cx="370" cy="192" r="6" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="1" />
-              {/* Hidden layer */}
               <circle cx="413" cy="139" r="7" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.5)" strokeWidth="1" style={{ animation: 'pulseNode 3s ease-in-out infinite', transformOrigin: '413px 139px' }} />
               <circle cx="413" cy="163" r="7" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" strokeWidth="1" style={{ animation: 'pulseNode 3s ease-in-out infinite', animationDelay: '0.4s', transformOrigin: '413px 163px' }} />
               <circle cx="413" cy="187" r="7" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.6)" strokeWidth="1" style={{ animation: 'pulseNode 3s ease-in-out infinite', animationDelay: '0.8s', transformOrigin: '413px 187px' }} />
               <circle cx="413" cy="211" r="7" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.35)" strokeWidth="1" style={{ animation: 'pulseNode 3s ease-in-out infinite', animationDelay: '1.2s', transformOrigin: '413px 211px' }} />
-              {/* Output node */}
               <circle cx="456" cy="175" r="9" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.6)" strokeWidth="1.2" />
               <circle cx="456" cy="175" r="5" fill="rgba(255,255,255,0.35)" />
 
-              {/* Connections input→hidden */}
               <line x1="376" y1="146" x2="406" y2="139" stroke="rgba(255,255,255,0.15)" strokeWidth="0.6" />
               <line x1="376" y1="146" x2="406" y2="163" stroke="rgba(255,255,255,0.12)" strokeWidth="0.5" />
               <line x1="376" y1="169" x2="406" y2="139" stroke="rgba(255,255,255,0.12)" strokeWidth="0.5" />
@@ -471,37 +439,30 @@ export default function SignUpPage() {
               <line x1="376" y1="192" x2="406" y2="163" stroke="rgba(255,255,255,0.1)" strokeWidth="0.5" />
               <line x1="376" y1="192" x2="406" y2="187" stroke="rgba(255,255,255,0.15)" strokeWidth="0.6" />
               <line x1="376" y1="192" x2="406" y2="211" stroke="rgba(255,255,255,0.12)" strokeWidth="0.5" />
-              {/* Connections hidden→output */}
               <line x1="420" y1="139" x2="447" y2="171" stroke="rgba(255,255,255,0.15)" strokeWidth="0.6" />
               <line x1="420" y1="163" x2="447" y2="173" stroke="rgba(255,255,255,0.25)" strokeWidth="0.8" />
               <line x1="420" y1="187" x2="447" y2="177" stroke="rgba(255,255,255,0.18)" strokeWidth="0.6" />
               <line x1="420" y1="211" x2="447" y2="179" stroke="rgba(255,255,255,0.12)" strokeWidth="0.5" />
 
-              {/* Processing dots */}
               <circle cx="398" cy="228" r="4" fill="rgba(255,255,255,0.5)" style={{ animation: 'pulseDot 1.5s ease-in-out infinite' }} />
               <circle cx="413" cy="228" r="4" fill="rgba(255,255,255,0.5)" style={{ animation: 'pulseDot 1.5s ease-in-out infinite', animationDelay: '0.3s' }} />
               <circle cx="428" cy="228" r="4" fill="rgba(255,255,255,0.5)" style={{ animation: 'pulseDot 1.5s ease-in-out infinite', animationDelay: '0.6s' }} />
               <text x="413" y="246" textAnchor="middle" fill="rgba(255, 255, 255, 0.65)" fontSize="11" fontFamily="var(--font-satoshi)">Processing…</text>
             </g>
 
-            {/* Arrow 3→4 */}
             <line x1="478" y1="183" x2="496" y2="183" stroke="rgba(255,255,255,0.4)" strokeWidth="1.2" markerEnd="url(#arrow)" strokeDasharray="6 4" />
 
-            {/* STAGE 4 — Score (Width: 130, Height: 162) */}
             <g>
               <rect x="500" y="102" width="130" height="162" rx="12" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.18)" strokeWidth="0.5" />
               <text x="565" y="122" textAnchor="middle" fill="rgba(255, 255, 255, 0.5)" fontSize="11" fontFamily="var(--font-cabinet)">04 — score</text>
 
-              {/* Floating particles */}
               <circle cx="542" cy="198" r="2" fill="rgba(255,255,255,0.5)" style={{ animation: 'pulseDot 2s ease-in-out infinite', animationDelay: '0.2s' }} />
               <circle cx="565" cy="192" r="1.5" fill="rgba(255,255,255,0.4)" style={{ animation: 'pulseDot 2s ease-in-out infinite', animationDelay: '0.6s' }} />
               <circle cx="586" cy="204" r="2" fill="rgba(255,255,255,0.35)" style={{ animation: 'pulseDot 2s ease-in-out infinite', animationDelay: '1s' }} />
 
-              {/* Score ring */}
               <circle cx="565" cy="172" r="38" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="5" />
               <circle cx="565" cy="172" r="38" fill="none" stroke="#79a4ff" strokeWidth="5" strokeDasharray="239" strokeDashoffset="239" strokeLinecap="round" transform="rotate(-90 565 172)" style={{ animation: 'fillScore 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards', transformOrigin: '565px 172px' }} />
 
-              {/* Score number */}
               <g>
                 <text x="565" y="166" textAnchor="middle" fontSize="22" fontWeight="700" fontFamily="var(--font-cabinet)" fill="white">87</text>
                 <text x="565" y="182" textAnchor="middle" fill="rgba(255, 255, 255, 0.5)" fontSize="11" fontFamily="var(--font-satoshi)">/ 100</text>
@@ -510,65 +471,52 @@ export default function SignUpPage() {
               <text x="565" y="246" textAnchor="middle" fill="rgba(255, 255, 255, 0.65)" fontSize="11" fontFamily="var(--font-satoshi)">Match score</text>
             </g>
 
-            {/* BREAKDOWN SECTION (Optimized to cover all bottom space) */}
             <line x1="44" y1="292" x2="636" y2="292" stroke="rgba(255,255,255,0.07)" strokeWidth="0.5" />
 
             <text x="44" y="314" fontSize="13" fill="rgba(255,255,255,0.75)" fontFamily="var(--font-cabinet)" fontWeight="500">Score breakdown</text>
 
-            {/* Left Column: Bar chart rows */}
-            {/* Skills */}
             <text x="44" y="340" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">Skills match</text>
             <rect x="160" y="329" width="170" height="11" rx="5" fill="rgba(255,255,255,0.08)" />
             <rect x="160" y="329" width="0" height="11" rx="5" fill="#79a4ff" style={{ animation: 'fillSkills 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards' }} />
             <text x="338" y="340" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">65%</text>
 
-            {/* Experience */}
             <text x="44" y="368" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">Experience</text>
             <rect x="160" y="357" width="170" height="11" rx="5" fill="rgba(255,255,255,0.08)" />
             <rect x="160" y="357" width="0" height="11" rx="5" fill="#79a4ff" style={{ animation: 'fillExp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards', animationDelay: '0.1s' }} />
             <text x="338" y="368" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">82%</text>
 
-            {/* Education */}
             <text x="44" y="396" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">Education</text>
             <rect x="160" y="385" width="170" height="11" rx="5" fill="rgba(255,255,255,0.08)" />
             <rect x="160" y="385" width="0" height="11" rx="5" fill="#79a4ff" style={{ animation: 'fillEdu 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards', animationDelay: '0.2s' }} />
             <text x="338" y="396" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">53%</text>
 
-            {/* Keywords */}
             <text x="44" y="424" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">Keywords</text>
             <rect x="160" y="413" width="170" height="11" rx="5" fill="rgba(255,255,255,0.08)" />
             <rect x="160" y="413" width="0" height="11" rx="5" fill="#79a4ff" style={{ animation: 'fillKeywords 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards', animationDelay: '0.3s' }} />
             <text x="338" y="424" fill="rgba(255, 255, 255, 0.65)" fontSize="12" fontFamily="var(--font-satoshi)">94%</text>
 
-            {/* Right Column: AI Analysis Verdict Insights Panel */}
             <g>
               <rect x="388" y="314" width="248" height="121" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
               <text x="404" y="335" fontSize="12" fontWeight="700" fill="rgba(255,255,255,0.9)" fontFamily="var(--font-cabinet)">AI Verdict</text>
               
-              {/* Green match badge */}
               <rect x="546" y="322" width="78" height="18" rx="9" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.3)" strokeWidth="0.5" />
               <text x="585" y="334" textAnchor="middle" fontSize="9" fontWeight="700" fill="#34d399" fontFamily="var(--font-satoshi)">STRONG FIT</text>
 
-              {/* Bullet 1 */}
               <circle cx="409" cy="362" r="5" fill="rgba(52,211,153,0.15)" stroke="#34d399" strokeWidth="0.8" />
               <path d="M407 362l1.5 1.5 2.5-3" fill="none" stroke="#34d399" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" />
               <text x="424" y="365" fontSize="10.5" fill="rgba(255,255,255,0.7)" fontFamily="var(--font-satoshi)">Excellent experience matching</text>
 
-              {/* Bullet 2 */}
               <circle cx="409" cy="387" r="5" fill="rgba(52,211,153,0.15)" stroke="#34d399" strokeWidth="0.8" />
               <path d="M407 387l1.5 1.5 2.5-3" fill="none" stroke="#34d399" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" />
               <text x="424" y="390" fontSize="10.5" fill="rgba(255,255,255,0.7)" fontFamily="var(--font-satoshi)">Keywords alignment is above 90%</text>
 
-              {/* Bullet 3 */}
               <circle cx="409" cy="412" r="5" fill="rgba(52,211,153,0.15)" stroke="#34d399" strokeWidth="0.8" />
               <path d="M407 412l1.5 1.5 2.5-3" fill="none" stroke="#34d399" strokeWidth="0.8" strokeLinecap="round" strokeLinejoin="round" />
               <text x="424" y="415" fontSize="10.5" fill="rgba(255,255,255,0.7)" fontFamily="var(--font-satoshi)">Recommended for immediate screening</text>
             </g>
 
-            {/* Bottom Left: Tag Pills (Two Rows to cover bottom space beautifully) */}
             <text x="44" y="465" fontSize="13" fill="rgba(255,255,255,0.75)" fontFamily="var(--font-cabinet)" fontWeight="500">Detected skills</text>
 
-            {/* Row 1 Tag Pills */}
             <g>
               <rect x="44" y="475" width="56" height="20" rx="10" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
               <text x="72" y="489" textAnchor="middle" fontSize="11" fontFamily="var(--font-satoshi)" fill="rgba(255,255,255,0.85)">Python</text>
@@ -586,7 +534,6 @@ export default function SignUpPage() {
               <text x="336" y="489" textAnchor="middle" fontSize="11" fontFamily="var(--font-satoshi)" fill="rgba(255,255,255,0.85)">AWS</text>
             </g>
 
-            {/* Row 2 Tag Pills */}
             <g>
               <rect x="44" y="502" width="56" height="20" rx="10" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" strokeWidth="0.5" />
               <text x="72" y="516" textAnchor="middle" fontSize="11" fontFamily="var(--font-satoshi)" fill="rgba(255,255,255,0.85)">React</text>
@@ -604,14 +551,12 @@ export default function SignUpPage() {
               <text x="317" y="516" textAnchor="middle" fontSize="11" fontFamily="var(--font-satoshi)" fill="rgba(255,255,255,0.85)">PyTorch</text>
             </g>
 
-            {/* Bottom Right: Processing Metrics Panel */}
             <g>
               <rect x="388" y="456" width="248" height="66" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" strokeWidth="0.8" />
               <text x="404" y="475" fontSize="10" fontWeight="700" fill="rgba(255,255,255,0.4)" fontFamily="var(--font-cabinet)">PROCESSING METRICS</text>
               <text x="404" y="495" fontSize="11" fill="rgba(255, 255, 255, 0.85)" fontFamily="var(--font-satoshi)">ATS Compatibility: <tspan fill="#34d399" fontWeight="700">PASS</tspan></text>
               <text x="404" y="512" fontSize="11" fill="rgba(255, 255, 255, 0.85)" fontFamily="var(--font-satoshi)">Total Scan Time: <tspan fill="white" fontWeight="700">1.2 seconds</tspan></text>
               
-              {/* Grade A Badge */}
               <g>
                 <rect x="556" y="468" width="68" height="42" rx="8" fill="rgba(121,164,255,0.1)" stroke="rgba(121,164,255,0.2)" strokeWidth="0.8" />
                 <text x="590" y="478" textAnchor="middle" fontSize="7" fontWeight="700" fill="rgba(121,164,255,0.7)" fontFamily="var(--font-satoshi)">GRADE</text>
@@ -621,7 +566,6 @@ export default function SignUpPage() {
           </svg>
         </motion.div>
 
-        {/* Float design content overlay */}
         <div className="absolute bottom-16 left-16 right-16 z-20 text-white max-w-lg">
         </div>
 

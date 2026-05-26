@@ -119,12 +119,9 @@ export default function Process() {
           </p>
         </div>
 
-        {/* Desktop Stepper Visual (Hidden on Mobile) */}
         <div className="hidden md:block relative w-full max-w-4xl mx-auto mb-20 px-8">
-          {/* Connector Line Background */}
           <div className="absolute left-12 right-12 top-6 h-[3px] bg-slate-200/50 rounded-full -z-10" />
 
-          {/* Connector Line Fill */}
           <div
             className="absolute left-12 top-6 h-[3px] bg-gradient-to-r from-blue-normal via-blue-dark to-indigo-600 rounded-full -z-10 transition-all duration-700 ease-out"
             style={{ width: `calc(${getProgressWidth()} - 48px)` }}
@@ -153,7 +150,6 @@ export default function Process() {
           </div>
         </div>
 
-        {/* Desktop Cards Grid (Hidden on Mobile) */}
         <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-4">
           {steps.map((step) => {
             const isCardActive = activeItems[`s${step.id}`];
@@ -185,9 +181,7 @@ export default function Process() {
           })}
         </div>
 
-        {/* Mobile Vertical Stepper Flow (Hidden on Desktop) */}
         <div className="md:hidden space-y-8 relative pl-9 before:absolute before:left-[17px] before:top-2 before:bottom-2 before:w-[3px] before:bg-slate-200/50 before:rounded-full">
-          {/* Active vertical connector line */}
           <div
             className="absolute left-[17px] top-2 w-[3px] bg-gradient-to-b from-blue-normal via-blue-dark to-indigo-600 rounded-full transition-all duration-500 ease-out"
             style={{ height: getMobileProgressHeight() }}
@@ -198,7 +192,6 @@ export default function Process() {
             const isCardActive = activeItems[`s${step.id}`];
             return (
               <div key={step.id} className="relative flex flex-col items-start">
-                {/* Circle absolute positioned */}
                 <div className={`absolute -left-[35px] top-1.5 w-8 h-8 rounded-full flex items-center justify-center border text-xs font-cabinet font-bold z-10 transition-all duration-500 ${isCircleActive
                     ? 'bg-blue-normal text-white border-blue-normal ring-4 ring-blue-light shadow-md shadow-blue-normal/20'
                     : 'bg-white text-slate-400 border-slate-200'
@@ -206,7 +199,6 @@ export default function Process() {
                   {step.id}
                 </div>
 
-                {/* Card Container */}
                 <div className={`w-full glass-card-premium rounded-2xl p-6 border flex flex-col items-start bg-white transition-all duration-500 ${isCardActive
                     ? 'border-blue-normal/50 shadow-lg'
                     : 'border-slate-200/60 opacity-60'

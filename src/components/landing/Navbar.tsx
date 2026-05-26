@@ -19,7 +19,6 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* Desktop Nav Links */}
         <nav className="hidden md:flex items-center gap-8">
           <a href="#features" className="nav-link text-sm font-medium">Features</a>
           <a href="#simulator" className="nav-link text-sm font-medium">ATS Simulator</a>
@@ -27,7 +26,6 @@ export default function Navbar() {
           <a href="#testimonials" className="nav-link text-sm font-medium">Success Stories</a>
         </nav>
 
-        {/* Nav Actions */}
         <div className="flex items-center gap-4">
           {status === "loading" ? (
             <div className="h-8 w-20 bg-slate-100 rounded-lg animate-pulse" />

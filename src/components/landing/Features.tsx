@@ -20,7 +20,6 @@ export default function Features() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Feature 1 */}
           <div className="glass-card-premium feature-card rounded-2xl p-6 border flex flex-col items-start bg-white shadow-sm">
             <div className="w-12 h-12 rounded-xl bg-blue-light border border-blue-light-active flex items-center justify-center text-blue-normal mb-6">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -33,7 +32,6 @@ export default function Features() {
             </p>
           </div>
 
-          {/* Feature 2 */}
           <div className="glass-card-premium feature-card rounded-2xl p-6 border flex flex-col items-start bg-white shadow-sm">
             <div className="w-12 h-12 rounded-xl bg-blue-light border border-blue-light-active flex items-center justify-center text-blue-normal mb-6">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -46,7 +44,6 @@ export default function Features() {
             </p>
           </div>
 
-          {/* Feature 3 */}
           <div className="glass-card-premium feature-card rounded-2xl p-6 border flex flex-col items-start bg-white shadow-sm">
             <div className="w-12 h-12 rounded-xl bg-blue-light border border-blue-light-active flex items-center justify-center text-blue-normal mb-6">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
@@ -59,7 +56,6 @@ export default function Features() {
             </p>
           </div>
 
-          {/* Feature 4 */}
           <div className="glass-card-premium feature-card rounded-2xl p-6 border flex flex-col items-start bg-white shadow-sm">
             <div className="w-12 h-12 rounded-xl bg-blue-light border border-blue-light-active flex items-center justify-center text-blue-normal mb-6">
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
