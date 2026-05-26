@@ -6,13 +6,11 @@ const destDir = 'd:\\resume-analyzer\\public\\images';
 const destPath = path.join(destDir, 'halftone_clouds.png');
 
 try {
-  // Ensure images directory exists
   if (!fs.existsSync(destDir)) {
     fs.mkdirSync(destDir, { recursive: true });
     console.log('Created directory:', destDir);
   }
 
-  // Copy file
   fs.copyFileSync(sourcePath, destPath);
   console.log('Successfully copied image to:', destPath);
 } catch (err) {

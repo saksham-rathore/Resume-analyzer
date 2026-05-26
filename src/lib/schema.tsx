@@ -7,7 +7,6 @@ import {
   integer,
 } from "drizzle-orm/pg-core";
 
-// Users
 export const users = pgTable("users", {
   id: text("id").primaryKey(),
   name: text("name"),
@@ -16,7 +15,6 @@ export const users = pgTable("users", {
   password: text("password"),
 });
 
-// Accounts (OAuth)
 export const accounts = pgTable(
   "accounts",
   {
@@ -31,14 +29,12 @@ export const accounts = pgTable(
   })
 );
 
-// Sessions
 export const sessions = pgTable("sessions", {
   sessionToken: text("session_token").primaryKey(),
   userId: text("user_id").notNull(),
   expires: timestamp("expires").notNull(),
 });
 
-// resumes
 export const resume = pgTable("resume", {
   id: serial("id").primaryKey(),
   userId: text("user_id")
@@ -50,8 +46,6 @@ export const resume = pgTable("resume", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-
-// Analysis
 export const analysis = pgTable("analysis", {
   id: serial("id").primaryKey(),
   resumeId: integer("resume_id")

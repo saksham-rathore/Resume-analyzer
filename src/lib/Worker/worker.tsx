@@ -42,7 +42,7 @@ const worker = new Worker(
       Analyse the resume below and return ONLY a valid JSON object matching this schema, no extra markdown formatting or wrapping:
 
       {
-        "score": number, // between 0 and 100
+        "score": number,
         "feedback": "overall feedback in 3-4 sentences",
         "strengths": "key strengths in 2-3 sentences",
         "weaknesses": "areas to improve in 2-3 sentences",
