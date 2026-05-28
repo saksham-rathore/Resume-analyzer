@@ -4,7 +4,7 @@ import { resume, users } from "@/lib/schema";
 import { analysis } from "@/lib/schema";
 import { resumeQueue } from "@/lib/Worker/queue";
 import { error } from "console";
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 
 export async function POST(req: Request) {
     try {
@@ -76,10 +76,27 @@ export async function GET(req: Request) {
         }
 
         const resumes = await db
-            .select()
+            .select({
+                id: resume.id,
+                userId: resume.userId,
+                title: resume.title,
+                content: resume.content,
+                fileUrl: resume.fileUrl,
+                createdAt: resume.createdAt,
+                analysis: {
+                    id: analysis.id,
+                    score: analysis.score,
+                    feedback: analysis.feedback,
+                    strengths: analysis.strengths,
+                    weaknesses: analysis.weaknesses,
+                    suggestions: analysis.suggestions,
+                    jobRole: analysis.jobRole,
+                }
+            })
             .from(resume)
+            .leftJoin(analysis, eq(analysis.resumeId, resume.id))
             .where(eq(resume.userId, userId))
-            .orderBy(resume.createdAt);
+            .orderBy(desc(resume.createdAt));
 
         return NextResponse.json(resumes);
 
@@ -87,6 +104,32 @@ export async function GET(req: Request) {
         console.error("GET /api/resumes error:", error);
         return NextResponse.json(
             { error: "Failed to fetch resumes" },
+            { status: 500 }
+        );
+    }
+}
+
+export async function DELETE(req: Request) {
+    try {
+        const { searchParams } = new URL(req.url);
+        const id = searchParams.get("id");
+
+        if (!id) {
+            return NextResponse.json(
+                { error: "Resume ID is required" },
+                { status: 400 }
+            );
+        }
+
+        await db
+            .delete(resume)
+            .where(eq(resume.id, parseInt(id)));
+
+        return NextResponse.json({ success: true, message: "Resume deleted successfully" });
+    } catch (error) {
+        console.error("DELETE /api/Resume error:", error);
+        return NextResponse.json(
+            { error: "Failed to delete resume" },
             { status: 500 }
         );
     }
