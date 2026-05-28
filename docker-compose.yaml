@@ -32,5 +32,18 @@ services:
       REDIS_URL: redis://redis:6379
     command: npm run dev
 
+  # ADDED WORKER CONTAINER HERE
+  worker:
+    build: .
+    container_name: resume_worker
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      DATABASE_URL: postgresql://neondb_owner:npg_mwAZpHacB4t9@ep-dark-cell-aqp6645z-pooler.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+      REDIS_URL: redis://redis:6379
+    command: npm run dev:worker
+    restart: always
+
 volumes:
   postgres_data:
