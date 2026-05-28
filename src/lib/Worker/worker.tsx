@@ -35,7 +35,12 @@ const worker = new Worker(
       .set({ content: resumeText })
       .where(eq(resume.id, resumeId));
 
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const model = genAI.getGenerativeModel({ 
+      model: 'gemini-2.5-flash',
+      generationConfig: {
+        responseMimeType: "application/json"
+      }
+    });
 
     const prompt = `
       You are a professional resume analyser.
@@ -59,8 +64,7 @@ const worker = new Worker(
     const text = result.response.text();
 
 
-    const cleaned = text.replace(/```json|```/g, ``).trim();
-    const aiResult = JSON.parse(cleaned);
+    const aiResult = JSON.parse(text.trim());
 
     await db
       .insert(analysis)
@@ -77,7 +81,7 @@ const worker = new Worker(
 
     console.log(`Analysis saved for resume ID: ${resumeId}`);
   },
-  { connection },
+  { connection, concurrency: 5 },
 );
 
 worker.on('completed', job => {
