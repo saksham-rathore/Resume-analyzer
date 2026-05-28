@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
 export default function SignUpPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -122,6 +123,7 @@ export default function SignUpPage() {
         </div>
 
         <motion.div
+          key={pathname}
           className="my-auto py-8 w-full max-w-md mx-auto"
           variants={containerVariants}
           initial="hidden"

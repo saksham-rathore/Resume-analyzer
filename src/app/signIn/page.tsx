@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
 export default function SignInPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -107,6 +108,7 @@ export default function SignInPage() {
         </div>
 
         <motion.div
+          key={pathname}
           className="my-auto py-10 w-full max-w-md mx-auto"
           variants={containerVariants}
           initial="hidden"

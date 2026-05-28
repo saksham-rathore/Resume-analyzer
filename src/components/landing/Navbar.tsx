@@ -1,12 +1,14 @@
 'use client';
 import React from 'react';
 import { useSession, signOut } from "next-auth/react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { data: session, status } = useSession();
+  const pathname = usePathname();
 
   return (
-    <header className="glass-nav sticky top-0 w-full z-50 transition-all duration-300">
+    <header key={pathname} className="glass-nav sticky top-0 w-full z-50 transition-all duration-300">
       <div className="landing-content-width mx-auto h-18 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-normal to-blue-dark flex items-center justify-center shadow-md shadow-blue-normal/20">

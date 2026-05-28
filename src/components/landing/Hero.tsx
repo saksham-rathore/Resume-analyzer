@@ -162,11 +162,10 @@ export default function Hero() {
 
   const pathname = usePathname();
   return (
-    <section className="relative px-6 landing-content-width mx-auto z-10">
+    <section key={pathname} className="relative px-6 landing-content-width mx-auto z-10">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
         <motion.div
-          key={pathname}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
