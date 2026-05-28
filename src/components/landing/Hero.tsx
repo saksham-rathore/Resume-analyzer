@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useSession } from 'next-auth/react';
 import axios from 'axios';
+import { usePathname } from "next/navigation";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -158,11 +159,14 @@ export default function Hero() {
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
+
+  const pathname = usePathname();
   return (
     <section className="relative px-6 landing-content-width mx-auto z-10">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
         <motion.div
+          key={pathname}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -384,9 +388,8 @@ export default function Hero() {
                       initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.3, type: 'spring', stiffness: 100 }}
-                      className={`flex items-start gap-3 p-3 border rounded-xl ${
-                        analysisResult ? 'bg-emerald-50/50 border-emerald-100' : 'bg-red-50/50 border-red-100'
-                      }`}
+                      className={`flex items-start gap-3 p-3 border rounded-xl ${analysisResult ? 'bg-emerald-50/50 border-emerald-100' : 'bg-red-50/50 border-red-100'
+                        }`}
                     >
                       {analysisResult ? (
                         <svg className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
