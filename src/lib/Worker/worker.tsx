@@ -23,7 +23,7 @@ const worker = new Worker(
 
     const parser = new PDFParse({ data: buffer });
     let resumeText = '';
-    try { 
+    try {
       const parsed = await parser.getText();
       resumeText = parsed.text;
     } finally {
@@ -35,7 +35,7 @@ const worker = new Worker(
       .set({ content: resumeText })
       .where(eq(resume.id, resumeId));
 
-    const model = genAI.getGenerativeModel({ 
+    const model = genAI.getGenerativeModel({
       model: 'gemini-2.5-flash',
       generationConfig: {
         responseMimeType: "application/json"
