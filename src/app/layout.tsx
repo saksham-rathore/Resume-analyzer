@@ -2,6 +2,12 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import AuthProvider from "@/Context/auth.provider";
+import { Bitcount } from "next/font/google"
+
+const bitcount = Bitcount({
+  subsets: ["latin"],
+  variable: "--font-bitcount",
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,8 +32,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${bitcount.variable} h-full antialiased`}
     >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@fontsource/bitcount-prop-single-ink@5.0.1/index.css"
+        />
+      </head>
       <body className="min-h-full flex flex-col">
         <AuthProvider>
           {children}

@@ -3,11 +3,11 @@ import Logo from './Logo'
 
 export default function Navbar() {
     return (
-        <nav className='w-full flex justify-between items-center px-6 py-4'>
-            <Logo size={12} />
-            <h1 className='font-bitcount'>UDAAN</h1>
-
-            
+        <nav className='flex items-center justify-center gap-6'>
+            <Logo size={50} />
+            <h1 className='font-bitcount text-5xl tracking-widest mt-2'>
+                UDAAN
+            </h1>
         </nav>
     )
 }
