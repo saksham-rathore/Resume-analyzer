@@ -6,7 +6,7 @@ export default function Navbar() {
     return (
         <div className='w-full py-5 px-6 md:px-0 border-b border-slate-100/50 bg-white/70 backdrop-blur-md sticky top-0 z-50'>
             <div className='mx-auto max-w-[1200px] flex items-center justify-between'>
-                {/* Left Side: Logo, Title, and Nav Links */}
+                
                 <div className='flex items-center gap-8'>
                     <Link href='/' className='flex items-center gap-4 hover:opacity-90 transition-opacity'>
                         <Logo size={44} />
@@ -15,7 +15,7 @@ export default function Navbar() {
                         </h1>
                     </Link>
 
-                    {/* Navigation Links */}
+               
                     <nav className='hidden md:flex items-center gap-6 text-sm font-medium text-slate-500'>
                         <Link href='/#features' className='hover:text-slate-900 transition-colors'>
                             Features
@@ -32,7 +32,7 @@ export default function Navbar() {
                     </nav>
                 </div>
 
-                {/* Right Side: Action Buttons */}
+                
                 <div className='flex items-center gap-4'>
                     <Link
                         href='/signIn'
