@@ -3,13 +3,14 @@ import Navbar from "@/components/landing/Navbar";
 
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
+    <div className="w-full overflow-x-hidden">
       <Navbar />
-      <main>
+      
+      <div className='mx-auto max-w-[900px] pt-12'>
+        <main>
 
-
-      </main>
-
+        </main>
+      </div>
     </div>
   );
 }
