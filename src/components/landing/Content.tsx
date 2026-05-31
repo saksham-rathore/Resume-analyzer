@@ -1,4 +1,5 @@
 import React from 'react';
+import Hero from './Hero';
 
 export default function Content() {
   return (
@@ -12,7 +13,7 @@ export default function Content() {
       </div>
 
 
-      <h1 className="text-5xl md:text-7xl font-[500] tracking-tight bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-[1.12] max-w-4xl mx-auto mt-10">
+      <h1 className="text-5xl md:text-7xl font-[500] tracking-tight bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-[1.12] max-w-4xl mx-auto mt-10 font-semibold">
         Turn Resumes into <br className="hidden md:inline" />
         Strong Shields
       </h1>
@@ -43,11 +44,13 @@ export default function Content() {
         </a>
         <a
           href="/#simulator"
-          className="text-center flex rounded-full px-8 py-3.5 text-base font-semibold text-slate-700 bg-white bg-white text-black px-6 py-2 rounded-full shadow-lg"
+          className="px-6 py-2.5 text-center flex items-center justify-center rounded-full text-sm font-normal text-slate-700 bg-white shadow-lg"
         >
           ATS Simulator
         </a>
       </div>
+
+      <Hero />
     </div>
   );
 }
