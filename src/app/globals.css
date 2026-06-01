@@ -264,3 +264,12 @@ h1 {
   --muted: 250 20% 96%;
   --border: 250 10% 90%;
 }
+
+@keyframes moveDots {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
