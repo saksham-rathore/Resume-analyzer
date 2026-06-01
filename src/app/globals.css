@@ -182,9 +182,11 @@ h1 {
     @apply border-border outline-ring/50;
     scroll-behavior: smooth;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
@@ -261,7 +263,8 @@ h1 {
 
 /* Your purple primary */
 :root {
-  --primary: 250 84% 54%;        /* your purple */
+  --primary: 250 84% 54%;
+  /* your purple */
   --muted: 250 20% 96%;
   --border: 250 10% 90%;
 }
@@ -270,7 +273,13 @@ h1 {
   0% {
     background-position: 0 0;
   }
+
   100% {
     background-position: 40px 40px;
   }
+}
+
+.card-dot-grid-purple {
+  background-image: radial-gradient(hsla(250, 84%, 54%, 0.08) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
 }

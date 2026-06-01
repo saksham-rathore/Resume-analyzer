@@ -1,20 +1,22 @@
 import React from 'react';
 import Dashboard from './Dashboard';
 import Features from './Features';
+import Simulator from './Simulator';
+import HowItWorks from './HowItWorks';
 
 export default function Content() {
   return (
     <div className="w-full flex flex-col items-center text-center pt-20 pb-32">
 
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold bg-slate-50 text-slate-600 border border-slate-200 shadow-[0_4px_12px_rgba(0,0,0,0.02)] transform hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
+      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold bg-slate-50 text-slate-655 text-slate-600 border border-slate-200 shadow-[0_4px_12px_rgba(0,0,0,0.02)] transform hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
         <span className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-pulse" />
           Protect & Perfect Your Resume
         </span>
       </div>
 
-      <h1 className="text-5xl md:text-7xl font-[500] tracking-tight bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-[1.12] max-w-4xl mx-auto mt-10 font-semibold font-sans">
-        Turn Resumes into <br className="hidden md:inline" />
+      <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-slate-900 leading-[1.12] max-w-4xl mx-auto mt-10 font-sans ">
+        Turn <span style={{ color: 'oklch(90.8% 0.008 264.534)' }}>Resumes</span> into <br className="hidden md:inline" />
         Strong Shields
       </h1>
 
@@ -51,6 +53,11 @@ export default function Content() {
       <Dashboard />
 
       <Features />
+
+      <Simulator />
+
+      <HowItWorks />
+
 
     </div>
   );
