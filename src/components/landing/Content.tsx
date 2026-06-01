@@ -1,5 +1,6 @@
 import React from 'react';
 import Dashboard from './Dashboard';
+import Features from './Features';
 
 export default function Content() {
   return (
@@ -12,17 +13,14 @@ export default function Content() {
         </span>
       </div>
 
-
-      <h1 className="text-5xl md:text-7xl font-[500] tracking-tight bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-[1.12] max-w-4xl mx-auto mt-10 font-semibold">
+      <h1 className="text-5xl md:text-7xl font-[500] tracking-tight bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent leading-[1.12] max-w-4xl mx-auto mt-10 font-semibold font-sans">
         Turn Resumes into <br className="hidden md:inline" />
         Strong Shields
       </h1>
 
-
-      <p className="text-lg text-slate-500 max-w-xl mx-auto mt-8 leading-snug">
+      <p className="text-lg text-slate-500 max-w-xl mx-auto mt-8 leading-snug font-medium">
         CV Shield scans, analyzes, and optimizes your resume to pass ATS filters and increase your chances of landing interviews.
       </p>
-
 
       <div className="flex flex-col sm:flex-row items-center gap-4 mt-10 justify-center">
         <a
@@ -51,6 +49,9 @@ export default function Content() {
       </div>
 
       <Dashboard />
+
+      <Features />
+
     </div>
   );
 }
