@@ -1,5 +1,5 @@
 import React from 'react';
-import Hero from './Hero';
+import Dashboard from './Dashboard';
 
 export default function Content() {
   return (
@@ -50,7 +50,7 @@ export default function Content() {
         </a>
       </div>
 
-      <Hero />
+      <Dashboard />
     </div>
   );
 }
