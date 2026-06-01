@@ -61,7 +61,6 @@ export default function Features() {
 
   return (
     <>
-      {/* Feature Header Section */}
       <div id="features" className="mt-32 max-w-3xl mx-auto scroll-mt-24">
         <h2 className="text-3xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent font-sans">
           Engineered to pass ATS filters
@@ -71,7 +70,6 @@ export default function Features() {
         </p>
       </div>
 
-      {/* 3x2 Dotted Grid Feature Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 w-full max-w-5xl mx-auto mt-16 border-t border-slate-200 border-dotted mb-12">
         {features.map((feature, i) => (
           <div
@@ -79,17 +77,14 @@ export default function Features() {
             className={`p-8 sm:p-12 text-left border-b border-slate-200 border-dotted flex flex-col items-start ${i % 2 === 0 ? 'md:border-r' : ''
               }`}
           >
-            {/* Square Icon Container */}
             <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center text-slate-900 border border-slate-200/50 shadow-sm">
               {feature.icon}
             </div>
 
-            {/* Title */}
             <h3 className="font-bold bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent mt-6 text-lg tracking-tight">
               {feature.title}
             </h3>
 
-            {/* Description */}
             <p className="text-slate-500 mt-2.5 text-xs sm:text-sm leading-relaxed font-medium">
               {feature.description}
             </p>

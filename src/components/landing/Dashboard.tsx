@@ -17,18 +17,16 @@ export default function Dashboard() {
         }
       `}} />
 
-      {/* Shining Line Overlay (sweeps over the entire outer border, white border, and inner content) */}
+     
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
         <div className="absolute top-1/2 left-1/2 w-[35%] h-[250%] bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shine" />
       </div>
 
-      {/* Bottom to Top Transparent Gradient Fade (covers both inner white and outer gray borders to remove bottom line) */}
       <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-white via-white/95 to-transparent pointer-events-none z-30" />
 
       <div className="rounded-[1.8rem] border-[10px] border-white bg-white overflow-hidden text-left relative">
         <div className="flex flex-col md:flex-row min-h-[500px]">
         
-        {/* Sidebar */}
         <aside className="w-full md:w-56 border-b md:border-b-0 md:border-r border-slate-200 bg-slate-50/40 p-5 flex flex-col gap-1.5 shrink-0">
           <div className="px-3 py-2 mb-4">
             <span className="font-sans font-bold text-[10px] uppercase tracking-wider text-slate-400">
@@ -57,10 +55,8 @@ export default function Dashboard() {
           </nav>
         </aside>
 
-        {/* Main content */}
         <main className="flex-1 p-6 sm:p-8 flex flex-col gap-6 bg-slate-50/20">
-          
-          {/* Header Title inside Dashboard Mock */}
+
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-xl font-bold text-slate-900 tracking-tight">System Analytics</h2>
@@ -71,7 +67,6 @@ export default function Dashboard() {
             </Badge>
           </div>
 
-          {/* Metric cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <Card className="border border-slate-200 bg-white shadow-none">
               <CardContent className="pt-4">
@@ -101,11 +96,8 @@ export default function Dashboard() {
               </CardContent>
             </Card>
           </div>
-
-          {/* Skill match + candidate list */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             
-            {/* Recent Candidates Card */}
             <Card className="border border-slate-200 bg-white shadow-none">
               <CardHeader className="pb-3 border-b border-slate-100">
                 <CardTitle className="text-sm font-bold text-slate-900">Recent Resumes Audited</CardTitle>
@@ -162,7 +154,6 @@ export default function Dashboard() {
               </CardContent>
             </Card>
 
-            {/* Skill Match Card */}
             <Card className="border border-slate-200 bg-white shadow-none">
               <CardHeader className="pb-3 border-b border-slate-100">
                 <CardTitle className="text-sm font-bold text-slate-900">Keyword Density & Skill Match</CardTitle>
