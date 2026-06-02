@@ -67,7 +67,12 @@ export default function Simulator() {
 
       {/* Title - styled in premium dark-grey dashboard color */}
       <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 font-sans mt-6 text-center leading-tight">
-        Test Your <span style={{ color: 'oklch(90.8% 0.008 264.534)' }}>Resume</span> Against <br className="hidden md:inline" />
+        Test Your <span style={{
+          background: 'linear-gradient(to top, #000000, oklch(90.8% 0.008 264.534))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          display: 'inline-block'
+        }}>Resume</span> Against <br className="hidden md:inline" />
         <span className="bg-gradient-to-r from-gray-900 via-slate-800 to-gray-900 bg-clip-text text-transparent">
           ATS Industry Filters
         </span>

@@ -16,7 +16,12 @@ export default function Content() {
       </div>
 
       <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-slate-900 leading-[1.12] max-w-4xl mx-auto mt-10 font-sans ">
-        Turn <span style={{ color: 'oklch(90.8% 0.008 264.534)' }}>Resumes</span> into <br className="hidden md:inline" />
+        Turn <span style={{
+          background: 'linear-gradient(to top, #000000, oklch(90.8% 0.008 264.534))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          display: 'inline-block'
+        }}>Resumes</span> Into <br className="hidden md:inline" />
         Strong Shields
       </h1>
 

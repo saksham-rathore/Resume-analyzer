@@ -63,7 +63,12 @@ export default function Features() {
     <>
       <div id="features" className="mt-32 max-w-3xl mx-auto scroll-mt-24">
         <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 font-sans">
-          Engineered to pass <span style={{ color: 'oklch(90.8% 0.008 264.534)' }}>ATS filters</span>
+          Engineered to pass <span style={{
+            background: 'linear-gradient(to top, #000000, oklch(90.8% 0.008 264.534))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            display: 'inline-block'
+          }}>ATS filters</span>
         </h2>
         <p className="text-slate-500 mt-4 text-sm sm:text-base max-w-lg mx-auto font-medium leading-relaxed">
           CV Shield delivers a comprehensive diagnostic audit of your resume structure, keyword density matches, and AI phrasing.
