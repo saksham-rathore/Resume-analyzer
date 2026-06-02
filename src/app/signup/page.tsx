@@ -5,6 +5,9 @@ import { signIn, useSession } from 'next-auth/react';
 import { useRouter, usePathname } from 'next/navigation';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 
+import Link from 'next/link';
+import Logo from '@/components/landing/Logo';
+
 export default function SignUpPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -109,18 +112,14 @@ export default function SignUpPage() {
   return (
     <div className="w-full min-h-screen flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-10 xl:p-14 bg-white text-slate-800 font-sans items-center justify-center">
 
-      <div className="flex flex-col justify-between min-h-[calc(100vh-7rem)] w-full max-w-md mx-auto items-center">
+      <div className="flex flex-col justify-between min-h-[calc(100vh-7rem)] w-full max-w-md mx-auto items-start">
 
-        <div className="flex items-center justify-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-normal to-blue-dark flex items-center justify-center shadow-sm">
-            <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-          </div>
-          <span className="font-cabinet font-extrabold text-xl text-slate-900 tracking-tight">
-            CV<span className="text-blue-normal">Shield</span>
-          </span>
-        </div>
+        <Link href="/" className="flex items-center gap-3.5 hover:opacity-90 transition-opacity self-start">
+          <Logo size={36} color="#0f172a"/>
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-transparent leading-none">
+            C<span className="text-xl ml-0.5">V</span> shield
+          </h1>
+        </Link>
 
         <motion.div
           key={pathname}

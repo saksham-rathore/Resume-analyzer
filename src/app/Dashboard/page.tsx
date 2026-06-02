@@ -6,6 +6,9 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 
+import Logo from '@/components/landing/Logo';
+import Link from 'next/link';
+
 interface ResumeAnalysis {
   id: number;
   score: number | null;
@@ -231,16 +234,12 @@ export default function DashboardPage() {
       {/* HEADER NAV */}
       <header className="sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-slate-100/80 px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => router.push('/')}>
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-normal to-blue-dark flex items-center justify-center shadow-sm">
-              <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
-            </div>
-            <span className="font-cabinet font-extrabold text-xl text-slate-900 tracking-tight">
-              CV<span className="text-blue-normal">Shield</span>
-            </span>
-          </div>
+          <Link href="/" className="flex items-center gap-3.5 hover:opacity-90 transition-opacity">
+            <Logo size={36} color="#0f172a" />
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-transparent leading-none">
+              C<span className="text-xl ml-0.5">V</span> shield
+            </h1>
+          </Link>
 
           <div className="flex items-center gap-6">
             <div className="hidden sm:flex flex-col items-end text-right">

@@ -4,6 +4,9 @@ import React, { useState, useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import Logo from '@/components/landing/Logo';
+import Link from 'next/link';
+import { Sparkles, FileText, CheckCircle2, X, Check, Lock, Mail, Eye, EyeOff, ShieldAlert } from 'lucide-react';
 
 export default function SignInPage() {
   const { data: session, status } = useSession();
@@ -92,38 +95,43 @@ export default function SignInPage() {
   };
 
   return (
-    <div className="w-full min-h-screen flex flex-col justify-between p-8 sm:p-12 md:p-16 lg:p-10 xl:p-14 bg-white text-slate-800 font-sans items-center justify-center">
+    <div className="w-full min-h-screen flex flex-col justify-between p-6 sm:p-10 bg-slate-50 text-slate-800 font-sans items-center justify-center relative overflow-hidden">
+      
+      {/* Subtle Background Glows */}
+      <div className="absolute w-[300px] h-[300px] rounded-full bg-blue-500/5 blur-[100px] top-12 left-12 pointer-events-none" />
+      <div className="absolute w-[300px] h-[300px] rounded-full bg-indigo-500/5 blur-[100px] bottom-12 right-12 pointer-events-none" />
 
-      <div className="flex flex-col justify-between min-h-[calc(100vh-7rem)] w-full max-w-md mx-auto items-center">
+      {/* Main card */}
+      <div className="w-full max-w-md my-auto flex flex-col items-start">
+        
+        {/* Brand Header */}
+        <Link href="/" className="flex items-center gap-3.5 hover:opacity-90 transition-opacity mb-8 self-start">
+          <Logo size={38} color="#0f172a" />
+          <h1 className="text-2xl font-bold bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 bg-clip-text text-transparent leading-none">
+            C<span className="text-xl ml-0.5">V</span> shield
+          </h1>
+        </Link>
 
-        <div className="flex items-center justify-center gap-2.5">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-normal to-blue-dark flex items-center justify-center shadow-sm">
-            <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
-          </div>
-          <span className="font-cabinet font-extrabold text-xl text-slate-900 tracking-tight">
-            CV<span className="text-blue-normal">Shield</span>
-          </span>
-        </div>
-
+        {/* Form Card */}
         <motion.div
           key={pathname}
-          className="my-auto py-10 w-full max-w-md mx-auto"
+          className="w-full bg-white rounded-[2rem] border border-slate-200/80 shadow-[0_12px_40px_rgba(0,0,0,0.03)] p-8 sm:p-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={itemVariants} className="space-y-2 mb-8">
-            <h1 className="font-cabinet font-extrabold text-3xl sm:text-4xl text-slate-900 tracking-tight leading-tight">
+          {/* Header Title */}
+          <motion.div variants={itemVariants} className="space-y-2.5 mb-8 text-left">
+            <h2 className="text-3xl font-bold text-slate-900 tracking-tight leading-tight">
               Welcome Back
-            </h1>
-            <p className="text-slate-500 text-sm sm:text-base font-medium">
-              Welcome back! Please enter your details to sign in
+            </h2>
+            <p className="text-slate-500 text-sm font-semibold">
+              Enter your details to access your secure diagnostics dashboard.
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="grid grid-cols-2 gap-3 mb-6">
+          {/* Social Auth Buttons */}
+          <motion.div variants={itemVariants} className="grid grid-cols-2 gap-3.5 mb-6">
             <button
               type="button"
               onClick={() => handleOAuthSignIn('google')}
@@ -155,7 +163,7 @@ export default function SignInPage() {
               onClick={() => handleOAuthSignIn('github')}
               className="flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 rounded-xl text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all duration-200 shadow-xs cursor-pointer active:scale-98"
             >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-slate-800" fill="currentColor" viewBox="0 0 24 24">
                 <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
               </svg>
               GitHub
@@ -166,11 +174,12 @@ export default function SignInPage() {
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-slate-200"></div>
             </div>
-            <span className="relative px-4 text-xs font-semibold text-slate-400 bg-white uppercase tracking-wider">
-              or
+            <span className="relative px-4 text-xs font-bold text-slate-400 bg-white uppercase tracking-wider">
+              or use credentials
             </span>
           </motion.div>
 
+          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <AnimatePresence mode="wait">
               {errorMsg && (
@@ -178,29 +187,35 @@ export default function SignInPage() {
                   initial={{ opacity: 0, height: 0, y: -10 }}
                   animate={{ opacity: 1, height: 'auto', y: 0 }}
                   exit={{ opacity: 0, height: 0, y: -10 }}
-                  className="bg-red-50 border border-red-200 text-red-600 text-xs sm:text-sm px-4 py-3 rounded-xl font-medium"
+                  className="bg-rose-50 border border-rose-200 text-rose-600 text-xs sm:text-sm px-4 py-3 rounded-xl font-semibold flex items-center gap-2"
                 >
-                  {errorMsg}
+                  <ShieldAlert className="w-4.5 h-4.5 text-rose-500 shrink-0" />
+                  <span>{errorMsg}</span>
                 </motion.div>
               )}
             </AnimatePresence>
 
-            <motion.div variants={itemVariants} className="space-y-1.5">
-              <label className="text-xs sm:text-sm font-semibold text-slate-700">Email Address</label>
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Enter your email"
-                className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-normal/20 focus:border-blue-normal transition-all text-sm bg-slate-50/50"
-              />
+            {/* Email Field */}
+            <motion.div variants={itemVariants} className="space-y-2">
+              <label className="text-xs sm:text-sm font-bold text-slate-700 block">Email Address</label>
+              <div className="relative">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 focus:outline-hidden focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-sm bg-slate-50/50 font-medium"
+                />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 w-4.5 h-4.5" />
+              </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="space-y-1.5 relative">
+            {/* Password Field */}
+            <motion.div variants={itemVariants} className="space-y-2">
               <div className="flex justify-between items-center">
-                <label className="text-xs sm:text-sm font-semibold text-slate-700">Password</label>
-                <a href="#" className="text-xs sm:text-sm font-semibold text-blue-normal hover:text-blue-dark transition-colors">
+                <label className="text-xs sm:text-sm font-bold text-slate-700">Password</label>
+                <a href="#" className="text-xs sm:text-sm font-bold text-blue-600 hover:text-blue-700 transition-colors">
                   Forgot Password?
                 </a>
               </div>
@@ -211,43 +226,37 @@ export default function SignInPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="w-full pl-4 pr-11 py-3.5 rounded-xl border border-slate-200 focus:outline-hidden focus:ring-2 focus:ring-blue-normal/20 focus:border-blue-normal transition-all text-sm bg-slate-50/50"
+                  className="w-full pl-11 pr-11 py-3 rounded-xl border border-slate-200 focus:outline-hidden focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-sm bg-slate-50/50 font-medium"
                 />
+                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 w-4.5 h-4.5" />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors p-1 cursor-pointer"
                 >
-                  {showPassword ? (
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
-                    </svg>
-                  ) : (
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                  )}
+                  {showPassword ? <EyeOff className="w-4.5 h-4.5" /> : <Eye className="w-4.5 h-4.5" />}
                 </button>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex items-center justify-between">
+            {/* Remember Me */}
+            <motion.div variants={itemVariants} className="flex items-center">
               <label className="flex items-center gap-2 cursor-pointer select-none">
                 <input
                   type="checkbox"
-                  className="w-4 h-4 rounded-sm border-slate-300 text-blue-normal focus:ring-blue-normal/20 accent-blue-normal"
+                  className="w-4.5 h-4.5 rounded-md border-slate-300 text-blue-600 focus:ring-blue-500/15 accent-blue-600 cursor-pointer"
                 />
                 <span className="text-xs sm:text-sm font-semibold text-slate-500">Keep me logged in</span>
               </label>
             </motion.div>
 
+            {/* Submit Button */}
             <motion.button
               variants={itemVariants}
               whileTap={{ scale: 0.98 }}
               type="submit"
               disabled={isLoading}
-              className="w-full bg-slate-900 hover:bg-slate-950 text-white font-semibold py-3.5 rounded-xl shadow-md transition-all duration-200 cursor-pointer active:scale-98 flex items-center justify-center gap-2 relative overflow-hidden"
+              className="w-full bg-slate-900 hover:bg-slate-950 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all duration-300 cursor-pointer active:scale-98 flex items-center justify-center gap-2"
             >
               {isLoading ? (
                 <div className="w-5 h-5 rounded-full border-2 border-t-white border-slate-700 animate-spin" />
@@ -257,19 +266,22 @@ export default function SignInPage() {
             </motion.button>
           </form>
 
+          {/* Switch to SignUp */}
           <motion.p variants={itemVariants} className="text-center text-xs sm:text-sm text-slate-500 font-semibold mt-6">
             Don't have an account?{' '}
-            <a href="/signup" className="text-blue-normal hover:text-blue-dark transition-colors font-bold">
+            <Link href="/signup" className="text-blue-600 hover:text-blue-700 transition-colors font-bold">
               Sign Up
-            </a>
+            </Link>
           </motion.p>
         </motion.div>
 
-        <div className="text-center text-xs text-slate-400 font-medium">
-          © {new Date().getFullYear()} CVShield. Secure ATS Resume Analytics.
-        </div>
-
       </div>
+
+      {/* Footer */}
+      <div className="text-center text-[10px] sm:text-xs text-slate-400 font-semibold self-center mt-8">
+        © {new Date().getFullYear()} CVShield. Secure ATS Resume Analytics.
+      </div>
+
     </div>
   );
 }
