@@ -34,7 +34,7 @@ const DashboardComponent = () => {
     setStep('analyzing');
     setTimeout(() => {
       setStep('results');
-    }, 3000);
+    }, 2000);
   };
 
   if (step === 'upload') {
