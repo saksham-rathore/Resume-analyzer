@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import {useSession} from 'next-auth/react';
 import { 
   GraduationCap, 
   Briefcase, 
@@ -20,6 +21,9 @@ import {
 const DashboardComponent = () => {
   const [step, setStep] = useState<'upload' | 'analyzing' | 'results'>('upload');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [jobRole, setJobRole] = useState<string>('');
+  const { data: session } = useSession();
+  const userId = session?.user.id;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -27,12 +31,51 @@ const DashboardComponent = () => {
     }
   };
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     if (!selectedFile) return;
     
     setStep('analyzing');
-    useEffect
-
+    
+    try {
+      const formData = new FormData();
+      formData.append("file", selectedFile);
+      formData.append("title", selectedFile.name);
+      formData.append("jobRole", jobRole); 
+      formData.append("userId", userId || "");  
+      
+      // 1. Upload to the API
+      const response = await fetch('/api/Resume', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      if (!response.ok) throw new Error("Failed to upload resume");
+      
+      const data = await response.json();
+      const resumeId = data.resumeId;
+      
+      // 2. Poll the status API every 2 seconds until the worker finishes
+      const pollInterval = setInterval(async () => {
+        try {
+          const statusRes = await fetch(`/api/auth/status?id=${resumeId}`);
+          if (statusRes.ok) {
+            const statusData = await statusRes.json();
+            
+            if (statusData.status === 'completed') {
+              clearInterval(pollInterval);
+              setStep('results');
+            }
+          }
+        } catch (pollErr) {
+          console.error("Polling error:", pollErr);
+        }
+      }, 2000);
+      
+    } catch (error) {
+      console.error("Error analyzing resume:", error);
+      setStep('upload');
+      alert("Failed to analyze resume. Make sure your backend worker is running!");
+    }
   };
 
   if (step === 'upload') {
