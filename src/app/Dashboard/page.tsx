@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   GraduationCap, 
   Briefcase, 
@@ -32,9 +31,8 @@ const DashboardComponent = () => {
     if (!selectedFile) return;
     
     setStep('analyzing');
-    setTimeout(() => {
-      setStep('results');
-    }, 2000);
+    useEffect
+
   };
 
   if (step === 'upload') {

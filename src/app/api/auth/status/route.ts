@@ -1,6 +1,5 @@
 import { db } from "@/lib/db";
 import { resume, analysis } from "@/lib/schema";
-import { error } from "console";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
