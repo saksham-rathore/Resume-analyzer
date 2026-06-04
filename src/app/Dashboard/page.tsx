@@ -25,13 +25,13 @@ const DashboardComponent = () => {
   const { data: session } = useSession();
   const user = session?.user?.id as string;
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>){
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setSelectedFile(e.target.files[0])
     }
   };
 
-  const handleAnalyze = () => {
+  const handleAnalyze = async () => {
     if (!selectedFile) return;
 
     setStep('analyzing');
@@ -74,23 +74,21 @@ const DashboardComponent = () => {
       console.error("Error analyzing resume:", error)
       setStep('upload');
       alert("Failed to analyse resume. Make sure your backend worker is running")
-    };
+    }
   };
-};
 
-if (step === 'upload') {
-  return (
-    <div className="min-h-screen w-full bg-zinc-50 text-zinc-900 font-sans flex flex-col items-center justify-center p-6">
+  if (step === 'upload') {
+    return (
+      <div className="min-h-screen w-full bg-zinc-50 text-zinc-900 font-sans flex flex-col items-center justify-center p-6">
       <div className="w-full max-w-2xl flex flex-col items-center">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-zinc-900 mb-3">Resume Analyzer</h1>
           <p className="text-zinc-500 max-w-md mx-auto">Upload your resume to get instant feedback on your ATS score, skills match, and job suggestions.</p>
         </div>
 
-        onChange={handleFileChange}
-            />
+        <input type="file" onChange={handleFileChange} />
 
-        <div className="w-20 h-20 rounded-full bg-zinc-100 group-hover:bg-blue-50 flex i  ms-center justify-center mb-6 transition-colors">
+        <div className="w-20 h-20 rounded-full bg-zinc-100 group-hover:bg-blue-50 flex items-center justify-center mb-6 transition-colors">
           {selectedFile ? (
             <FileText className="w-10 h-10 text-blue-500" />
           ) : (
@@ -120,8 +118,7 @@ if (step === 'upload') {
         )}
       </div>
     </div>
-      </div >
-    );
+  );
 }
 
 if (step === 'analyzing') {
