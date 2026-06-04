@@ -33,10 +33,18 @@ const DashboardComponent = () =>{
 
   const handleAnalyze = () => {
     if (!selectedFile) return; 
-    
-    
-  }
-}
+
+    setStep('analyzing');
+
+    try {
+      
+    } catch (error) {
+     console.error("Error analyzing resume:", error)
+     setStep('upload');
+     alert("Failed to analyse resume. Make sure your backend worker is running") 
+    };
+  };
+};
 
   if (step === 'upload') {
     return (
@@ -55,7 +63,7 @@ const DashboardComponent = () =>{
               onChange={handleFileChange}
             />
             
-            <div className="w-20 h-20 rounded-full bg-zinc-100 group-hover:bg-blue-50 flex items-center justify-center mb-6 transition-colors">
+            <div className="w-20 h-20 rounded-full bg-zinc-100 group-hover:bg-blue-50 flex i  ms-center justify-center mb-6 transition-colors">
               {selectedFile ? (
                 <FileText className="w-10 h-10 text-blue-500" />
               ) : (
