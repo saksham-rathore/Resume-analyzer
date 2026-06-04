@@ -86,35 +86,59 @@ const DashboardComponent = () => {
           <p className="text-zinc-500 max-w-md mx-auto">Upload your resume to get instant feedback on your ATS score, skills match, and job suggestions.</p>
         </div>
 
-        <input type="file" onChange={handleFileChange} />
+        {!selectedFile ? (
+          <label 
+            htmlFor="resume-upload" 
+            className="w-full max-w-xl group relative flex flex-col items-center justify-center p-12 border-2 border-dashed border-zinc-300 rounded-3xl bg-white hover:border-blue-500 hover:bg-blue-50 transition-all cursor-pointer shadow-sm overflow-hidden"
+          >
+            <input 
+              id="resume-upload" 
+              type="file" 
+              className="hidden" 
+              accept=".pdf,.docx,.doc" 
+              onChange={handleFileChange}
+            />
+            
+            <div className="w-20 h-20 rounded-full bg-zinc-100 group-hover:bg-blue-100 flex items-center justify-center mb-6 transition-colors shadow-inner">
+              <UploadCloud className="w-10 h-10 text-zinc-400 group-hover:text-blue-500 transition-colors" />
+            </div>
 
-        <div className="w-20 h-20 rounded-full bg-zinc-100 group-hover:bg-blue-50 flex items-center justify-center mb-6 transition-colors">
-          {selectedFile ? (
-            <FileText className="w-10 h-10 text-blue-500" />
-          ) : (
-            <UploadCloud className="w-10 h-10 text-zinc-400 group-hover:text-blue-500 transition-colors" />
-          )}
-        </div>
-
-        {selectedFile ? (
-          <>
-            <h3 className="text-xl font-bold text-zinc-900 mb-2">{selectedFile.name}</h3>
-            <p className="text-zinc-500 mb-6">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
-            <button
-              onClick={handleAnalyze}
-              className="relative z-20 px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-full shadow-lg shadow-blue-500/30 transition-all transform hover:scale-105 active:scale-95"
-            >
-              Analyze Resume
-            </button>
-          </>
-        ) : (
-          <>
-            <h3 className="text-xl font-bold text-zinc-900 mb-2">Drag & drop your resume here</h3>
-            <p className="text-zinc-500 mb-6">Supported formats: PDF, DOCX (Max 5MB)</p>
-            <button className="px-6 py-2.5 bg-zinc-100 text-zinc-700 hover:bg-zinc-200 transition-colors font-medium rounded-full pointer-events-none">
+            <h3 className="text-xl font-bold text-zinc-800 mb-2 group-hover:text-blue-600 transition-colors">Drag & drop your resume here</h3>
+            <p className="text-zinc-500 mb-6 text-sm">Supported formats: PDF, DOCX (Max 5MB)</p>
+            
+            <div className="px-6 py-2.5 bg-white border border-zinc-200 text-zinc-700 group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-all font-medium rounded-full shadow-sm">
               Browse Files
-            </button>
-          </>
+            </div>
+          </label>
+        ) : (
+          <div className="w-full max-w-xl flex flex-col items-center justify-center p-10 border border-zinc-200 rounded-3xl bg-white shadow-sm relative overflow-hidden">
+            {/* Background decoration */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-full -mr-10 -mt-10 blur-2xl"></div>
+            
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="w-20 h-20 rounded-full bg-blue-100 flex items-center justify-center mb-5 ring-4 ring-white shadow-md">
+                <FileText className="w-10 h-10 text-blue-600" />
+              </div>
+              
+              <h3 className="text-xl font-bold text-zinc-900 mb-1 text-center truncate max-w-xs">{selectedFile.name}</h3>
+              <p className="text-zinc-500 mb-8 font-medium">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</p>
+              
+              <div className="flex gap-4 w-full justify-center">
+                <button
+                  onClick={() => setSelectedFile(null)}
+                  className="px-6 py-3 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-semibold rounded-full transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleAnalyze}
+                  className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-lg shadow-blue-500/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  Analyze Resume
+                </button>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
