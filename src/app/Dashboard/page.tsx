@@ -38,9 +38,9 @@ const DashboardComponent = () => {
 
     try {
       const formData = new FormData();
-      formData.append("File", selectedFile);
+      formData.append("file", selectedFile);
       formData.append("jobRole", jobrole);
-      formData.append("Title", selectedFile.name);
+      formData.append("title", selectedFile.name);
       formData.append("userId", user);
 
       const response = await fetch('/api/Resume', {
@@ -48,7 +48,9 @@ const DashboardComponent = () => {
         body: formData,
       });
 
-      if (!response.ok) throw new Error("Failed to upload");
+      if (!response.ok) {
+        throw new Error("Failed to upload");
+      }
 
       const data = await response.json();
       const resumeId = data.resumeId;
