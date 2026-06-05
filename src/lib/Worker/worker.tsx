@@ -7,9 +7,7 @@ import { eq } from 'drizzle-orm';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.GEMINI_FLASH || '');
-const connection = process.env.REDIS_URL
-  ? new IORedis(process.env.REDIS_URL, { maxRetriesPerRequest: null })
-  : new IORedis({ maxRetriesPerRequest: null });
+const connection = new IORedis(process.env.REDIS_URL!, { maxRetriesPerRequest: null });
 
 const worker = new Worker(
   'resumeQueue',
