@@ -30,7 +30,7 @@ services:
     environment:
       DATABASE_URL: postgresql://neondb_owner:npg_mwAZpHacB4t9@ep-dark-cell-aqp6645z-pooler.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
       REDIS_URL: redis://redis:6379
-    
+
     command: sh -c "npm run build && npm run start"
 
   worker:
@@ -42,7 +42,7 @@ services:
     environment:
       DATABASE_URL: postgresql://neondb_owner:npg_mwAZpHacB4t9@ep-dark-cell-aqp6645z-pooler.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
       REDIS_URL: redis://redis:6379
-    
+
     command: npm run start:worker
     restart: always
 

@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { resume, users, analysis } from "@/lib/schema";
-import { resumeQueue } from "@/lib/Worker/queue";
+import { getResumeQueue } from "@/lib/Worker/queue";
 import { eq, desc } from "drizzle-orm";
 
 export async function POST(req: Request) {
@@ -34,6 +34,7 @@ export async function POST(req: Request) {
             })
             .returning();
 
+        const resumeQueue = getResumeQueue();
         await resumeQueue.add(
             "analyse",
             {
