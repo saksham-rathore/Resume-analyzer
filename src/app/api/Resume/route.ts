@@ -1,9 +1,7 @@
 import { db } from "@/lib/db";
-import { NextRequest, NextResponse } from "next/server";
-import { resume, users } from "@/lib/schema";
-import { analysis } from "@/lib/schema";
+import { NextResponse } from "next/server";
+import { resume, users, analysis } from "@/lib/schema";
 import { resumeQueue } from "@/lib/Worker/queue";
-import { error } from "console";
 import { eq, desc } from "drizzle-orm";
 
 export async function POST(req: Request) {

@@ -2,12 +2,9 @@ import { Worker } from 'bullmq';
 import IORedis from 'ioredis';
 import { db } from '../db';
 import { resume, analysis } from '../schema';
-import { NextResponse } from 'next/server';
-import { resumeQueue } from './queue';
 import { PDFParse } from "pdf-parse";
 import { eq } from 'drizzle-orm';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { json } from 'stream/consumers';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.GEMINI_FLASH || '');
 const connection = new IORedis({ maxRetriesPerRequest: null });
@@ -47,12 +44,7 @@ const worker = new Worker(
       Analyse the resume below and return ONLY a valid JSON object matching this schema, no extra markdown formatting or wrapping:
 
       {
-        "score": number (0-100 overall score),
-        "skillsMatch": number (0-100),
-        "experienceScore": number (0-100),
-        "formattingScore": number (0-100),
-        "keywordsScore": number (0-100),
-        "techSkills": "comma-separated list of tech skills extracted (e.g. React, Python)",
+        "score": number,
         "feedback": "overall feedback in 3-4 sentences",
         "strengths": "key strengths in 2-3 sentences",
         "weaknesses": "areas to improve in 2-3 sentences",
@@ -76,11 +68,6 @@ const worker = new Worker(
       .values({
         resumeId: resumeId,
         score: aiResult.score,
-        skillsMatch: aiResult.skillsMatch,
-        experienceScore: aiResult.experienceScore,
-        formattingScore: aiResult.formattingScore,
-        keywordsScore: aiResult.keywordsScore,
-        techSkills: aiResult.techSkills,
         feedback: aiResult.feedback,
         strengths: aiResult.strengths,
         weaknesses: aiResult.weaknesses,

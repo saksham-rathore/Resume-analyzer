@@ -52,11 +52,6 @@ export const analysis = pgTable("analysis", {
     .references(() => resume.id, { onDelete: "cascade" })
     .notNull(),
   score: integer("score"),
-  skillsMatch: integer("skills_match"),
-  experienceScore: integer("experience_score"),
-  formattingScore: integer("formatting_score"),
-  keywordsScore: integer("keywords_score"),
-  techSkills: text("tech_skills"),
   feedback: text("feedback"),
   strengths: text("strengths"),
   weaknesses: text("weaknesses"),
