@@ -47,13 +47,18 @@ const worker = new Worker(
       Analyse the resume below and return ONLY a valid JSON object matching this schema, no extra markdown formatting or wrapping:
 
       {
-        "score": number,
+        "score": number (0-100 overall score),
+        "skillsMatch": number (0-100),
+        "experienceScore": number (0-100),
+        "formattingScore": number (0-100),
+        "keywordsScore": number (0-100),
+        "techSkills": "comma-separated list of tech skills extracted (e.g. React, Python)",
         "feedback": "overall feedback in 3-4 sentences",
         "strengths": "key strengths in 2-3 sentences",
         "weaknesses": "areas to improve in 2-3 sentences",
         "suggestions": "actionable suggestions in 2-3 sentences",
         "jobRole": "most suitable job role for this resume"
-      },
+      }
 
       ${jobRole ? `Target Job Role: ${jobRole}` : ''}
 
@@ -71,6 +76,11 @@ const worker = new Worker(
       .values({
         resumeId: resumeId,
         score: aiResult.score,
+        skillsMatch: aiResult.skillsMatch,
+        experienceScore: aiResult.experienceScore,
+        formattingScore: aiResult.formattingScore,
+        keywordsScore: aiResult.keywordsScore,
+        techSkills: aiResult.techSkills,
         feedback: aiResult.feedback,
         strengths: aiResult.strengths,
         weaknesses: aiResult.weaknesses,

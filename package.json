@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "start:worker": "tsx src/lib/Worker/worker.tsx",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:push": "drizzle-kit push"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.11.2",

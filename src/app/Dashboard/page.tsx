@@ -24,6 +24,7 @@ const DashboardComponent = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [jobrole, setjobrole] = useState<string>("")
   const [score, setscore] = useState<number | null>(null);
+  const [analysisData, setAnalysisData] = useState<any>(null);
   const { data: session } = useSession();
   const user = session?.user?.id as string;
 
@@ -67,7 +68,7 @@ const DashboardComponent = () => {
 
             if (statusData.status === "completed") {
               clearInterval(pollInterval);
-
+              setAnalysisData(statusData.analysis);
               setStep('results');
             }
           }
@@ -205,8 +206,8 @@ const DashboardComponent = () => {
                   </div>
 
                   <div className="text-center sm:text-left">
-                    <h3 className="text-sm font-bold text-zinc-900">Results{selectedFile?.name}</h3>
-                    <p className="text-xs text-zinc-500 mt-1">Your resume has strong matching qualities and formatting structure.</p>
+                    <h3 className="text-sm font-bold text-zinc-900">Results for {selectedFile?.name}</h3>
+                    <p className="text-xs text-zinc-500 mt-1">{analysisData?.feedback}</p>
                   </div>
                 </div>
               </div>
@@ -215,37 +216,37 @@ const DashboardComponent = () => {
                 <div>
                   <div className="flex justify-between text-xs font-semibold mb-1">
                     <span className="text-zinc-500">Skills match</span>
-                    <span className="text-zinc-800">{score}</span>
+                    <span className="text-zinc-800">{analysisData?.skillsMatch ?? 0}%</span>
                   </div>
                   <div className="w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500 rounded-full" style={{ width: '85%' }}></div>
+                    <div className="h-full bg-blue-500 rounded-full" style={{ width: `${analysisData?.skillsMatch ?? 0}%` }}></div>
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between text-xs font-semibold mb-1">
                     <span className="text-zinc-500">Experience</span>
-                    <span className="text-zinc-800">72%</span>
+                    <span className="text-zinc-800">{analysisData?.experienceScore ?? 0}%</span>
                   </div>
                   <div className="w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-lime-500 rounded-full" style={{ width: '72%' }}></div>
+                    <div className="h-full bg-lime-500 rounded-full" style={{ width: `${analysisData?.experienceScore ?? 0}%` }}></div>
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between text-xs font-semibold mb-1">
                     <span className="text-zinc-500">Formatting</span>
-                    <span className="text-zinc-800">90%</span>
+                    <span className="text-zinc-800">{analysisData?.formattingScore ?? 0}%</span>
                   </div>
                   <div className="w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: '90%' }}></div>
+                    <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${analysisData?.formattingScore ?? 0}%` }}></div>
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between text-xs font-semibold mb-1">
                     <span className="text-zinc-500">Keywords (ATS)</span>
-                    <span className="text-zinc-800">60%</span>
+                    <span className="text-zinc-800">{analysisData?.keywordsScore ?? 0}%</span>
                   </div>
                   <div className="w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
-                    <div className="h-full bg-amber-500 rounded-full" style={{ width: '60%' }}></div>
+                    <div className="h-full bg-amber-500 rounded-full" style={{ width: `${analysisData?.keywordsScore ?? 0}%` }}></div>
                   </div>
                 </div>
               </div>
@@ -308,14 +309,11 @@ const DashboardComponent = () => {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                <span className="px-2.5 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold shadow-sm">React</span>
-                <span className="px-2.5 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold shadow-sm">Python</span>
-                <span className="px-2.5 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold shadow-sm">Node.js</span>
-                <span className="px-2.5 py-1 rounded-full border border-green-200 bg-green-50 text-green-700 text-xs font-bold shadow-sm">TypeScript</span>
-                <span className="px-2.5 py-1 rounded-full border border-green-200 bg-green-50 text-green-700 text-xs font-bold shadow-sm">MongoDB</span>
-                <span className="px-2.5 py-1 rounded-full border border-green-200 bg-green-50 text-green-700 text-xs font-bold shadow-sm">Docker</span>
-                <span className="px-2.5 py-1 rounded-full border border-zinc-200 bg-zinc-100 text-zinc-600 text-xs font-bold shadow-sm">AWS</span>
-                <span className="px-2.5 py-1 rounded-full border border-zinc-200 bg-zinc-100 text-zinc-600 text-xs font-bold shadow-sm">Kubernetes</span>
+                {analysisData?.techSkills ? analysisData.techSkills.split(',').map((skill: string, idx: number) => (
+                  <span key={idx} className="px-2.5 py-1 rounded-full border border-blue-200 bg-blue-50 text-blue-700 text-xs font-bold shadow-sm">{skill.trim()}</span>
+                )) : (
+                  <span className="text-xs text-zinc-500">No skills extracted</span>
+                )}
               </div>
             </div>
 
@@ -335,37 +333,11 @@ const DashboardComponent = () => {
                       <Monitor className="w-4.5 h-4.5 text-blue-500" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-zinc-900">{jobrole}</h4>
-                      <p className="text-[10px] text-zinc-500 mt-0.5">React · Node.js · 3-5 yrs</p>
+                      <h4 className="text-xs font-bold text-zinc-900">{analysisData?.jobRole}</h4>
+                      <p className="text-[10px] text-zinc-500 mt-0.5">Primary Match</p>
                     </div>
                   </div>
-                  <span className="px-2 py-0.5 text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-200 rounded-full shadow-sm">92% match</span>
-                </div>
-
-                <div className="flex items-center justify-between p-3.5 bg-zinc-50 border border-zinc-200 rounded-xl hover:border-blue-300 transition duration-150 shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center border border-zinc-200 shadow-sm">
-                      <Cpu className="w-4.5 h-4.5 text-green-500" />
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold text-zinc-900">Full Stack Engineer</h4>
-                      <p className="text-[10px] text-zinc-500 mt-0.5">Python · MongoDB · Docker</p>
-                    </div>
-                  </div>
-                  <span className="px-2 py-0.5 text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-200 rounded-full shadow-sm">85% match</span>
-                </div>
-
-                <div className="flex items-center justify-between p-3.5 bg-zinc-50 border border-zinc-200 rounded-xl hover:border-blue-300 transition duration-150 shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center border border-zinc-200 shadow-sm">
-                      <Cloud className="w-4.5 h-4.5 text-zinc-500" />
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold text-zinc-900">DevOps / Cloud</h4>
-                      <p className="text-[10px] text-zinc-500 mt-0.5">AWS · Docker · K8s</p>
-                    </div>
-                  </div>
-                  <span className="px-2 py-0.5 text-[10px] font-bold text-amber-700 bg-amber-100 border border-amber-200 rounded-full shadow-sm">68% match</span>
+                  <span className="px-2 py-0.5 text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-200 rounded-full shadow-sm">Top Match</span>
                 </div>
               </div>
             </div>
@@ -380,30 +352,18 @@ const DashboardComponent = () => {
             <h2 className="text-sm font-bold text-zinc-800 tracking-wide">Improvement tips</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            <div className="flex gap-2.5 items-start">
-              <CheckCircle2 className="w-4.5 h-4.5 text-green-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-zinc-700 leading-snug font-medium">Good use of action verbs and measurable results</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="flex flex-col gap-2.5 items-start">
+              <div className="flex items-center gap-2"><CheckCircle2 className="w-4.5 h-4.5 text-green-500 flex-shrink-0" /><span className="font-bold text-sm">Strengths</span></div>
+              <p className="text-xs text-zinc-700 leading-snug font-medium">{analysisData?.strengths}</p>
             </div>
-
-            <div className="flex gap-2.5 items-start">
-              <AlertTriangle className="w-4.5 h-4.5 text-amber-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-zinc-700 leading-snug font-medium">Add more ATS keywords — "CI/CD", "REST API", "Agile"</p>
+            <div className="flex flex-col gap-2.5 items-start">
+              <div className="flex items-center gap-2"><AlertTriangle className="w-4.5 h-4.5 text-amber-500 flex-shrink-0" /><span className="font-bold text-sm">Weaknesses</span></div>
+              <p className="text-xs text-zinc-700 leading-snug font-medium">{analysisData?.weaknesses}</p>
             </div>
-
-            <div className="flex gap-2.5 items-start">
-              <AlertTriangle className="w-4.5 h-4.5 text-amber-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-zinc-700 leading-snug font-medium">Summary section is too short — expand to 3-4 lines</p>
-            </div>
-
-            <div className="flex gap-2.5 items-start">
-              <AlertTriangle className="w-4.5 h-4.5 text-amber-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-zinc-700 leading-snug font-medium">Missing LinkedIn or GitHub profile link</p>
-            </div>
-
-            <div className="flex gap-2.5 items-start">
-              <CheckCircle2 className="w-4.5 h-4.5 text-green-500 flex-shrink-0 mt-0.5" />
-              <p className="text-xs text-zinc-700 leading-snug font-medium">Consistent formatting and clean layout</p>
+            <div className="flex flex-col gap-2.5 items-start">
+              <div className="flex items-center gap-2"><Sparkles className="w-4.5 h-4.5 text-blue-500 flex-shrink-0" /><span className="font-bold text-sm">Suggestions</span></div>
+              <p className="text-xs text-zinc-700 leading-snug font-medium">{analysisData?.suggestions}</p>
             </div>
           </div>
         </div>

@@ -15,11 +15,24 @@ export async function GET(req: Request) {
             );
         }
 
-        const [row] = await db
-            .select()
+        const resumeRows = await db
+            .select({ id: resume.id })
             .from(resume)
-            .leftJoin(analysis, eq(analysis.resumeId, resume.id))
             .where(eq(resume.id, parseInt(id)));
+
+        if (resumeRows.length === 0) {
+            return NextResponse.json(
+                { error: "Resume not found" },
+                { status: 404 }
+            );
+        }
+
+        const analysisRows = await db
+            .select()
+            .from(analysis)
+            .where(eq(analysis.resumeId, parseInt(id)));
+
+        const row = { analysis: analysisRows[0] || null };
 
         if (!row) {
             return NextResponse.json(
