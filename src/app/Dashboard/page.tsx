@@ -23,7 +23,7 @@ const DashboardComponent = () => {
   const [step, setStep] = useState<'analyzing' | 'upload' | 'results'>('upload')
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [jobrole, setjobrole] = useState<string>("")
-  const [score, setscore] = useState<number>(0)
+  const [score, setscore] = useState<number | null>(null);
   const { data: session } = useSession();
   const user = session?.user?.id as string;
 
@@ -56,6 +56,7 @@ const DashboardComponent = () => {
 
       const data = await response.json();
       const resumeId = data.resumeId;
+      setscore(data.score)
 
       const pollInterval = setInterval(async () => {
         try {
@@ -214,7 +215,7 @@ const DashboardComponent = () => {
                 <div>
                   <div className="flex justify-between text-xs font-semibold mb-1">
                     <span className="text-zinc-500">Skills match</span>
-                    <span className="text-zinc-800"></span>
+                    <span className="text-zinc-800">{score}</span>
                   </div>
                   <div className="w-full h-2 bg-zinc-100 rounded-full overflow-hidden">
                     <div className="h-full bg-blue-500 rounded-full" style={{ width: '85%' }}></div>
